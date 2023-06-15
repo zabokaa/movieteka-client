@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { MovieCard} from "../movie-card/movie-card";
-import {MovieView} from "../movie-view/movie-view";
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view";
+
 export const MainView = () => {
 // movieid, title, description, directorid, genreid, imageurl, featured, year
     const [movies, setMovies] = useState([
@@ -30,21 +31,29 @@ export const MainView = () => {
         },
     ]);
 
-    const [selectedMovie, serSelectedMovie] = useState(null);
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
     if (selectedMovie) {
-        return <MovieView movie = {selectedMovie} />;   
-    }
+        return (
+        <MovieView movie={selectedMovie} />
+        );
+      }
+      
     if (movies.length === 0) {
         return <div>no movies to see</div>;
-    }
-    else {
+      }
+      
     return (
-      <div>
-        {movies.map((movie) => {
-            return <div key = {movie.movieid}>{movie.title}</div>;
-    })}
-      </div>
+        <div>
+          {movies.map((movie) => (
+            <MovieCard
+              key={movie.movieid}
+              movie={movie}
+              onMovieClick={(newSelectedMovie) => {
+                setSelectedMovie(newSelectedMovie);
+              }}
+            />
+          ))}
+        </div>
     );
-    }
-  };
+}

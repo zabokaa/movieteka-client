@@ -2949,7 +2949,7 @@ var _indexScss = require("./index.scss");
 const MovietekaApp = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
         fileName: "src/index.jsx",
-        lineNumber: 8,
+        lineNumber: 7,
         columnNumber: 10
     }, undefined);
 };
@@ -2959,7 +2959,7 @@ const root = (0, _client.createRoot)(container);
 // Tells React to render your app in the root DOM element
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MovietekaApp, {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 15,
+    lineNumber: 14,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -27337,38 +27337,39 @@ const MainView = ()=>{
             year: "2021"
         }
     ]);
-    const [selectedMovie, serSelectedMovie] = (0, _react.useState)(null);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 36,
-        columnNumber: 16
+        lineNumber: 38,
+        columnNumber: 9
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "no movies to see"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 39,
+        lineNumber: 43,
         columnNumber: 16
     }, undefined);
-    else return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>{
-            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: movie.title
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
+                onMovieClick: (newSelectedMovie)=>{
+                    setSelectedMovie(newSelectedMovie);
+                }
             }, movie.movieid, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 45,
-                columnNumber: 20
-            }, undefined);
-        })
+                lineNumber: 49,
+                columnNumber: 13
+            }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 43,
-        columnNumber: 7
+        lineNumber: 47,
+        columnNumber: 9
     }, undefined);
 };
-_s(MainView, "SHd98pVbgADnunJRvs518/G1pJ0=");
+_s(MainView, "+Qi5turVs2ZEvV+YCtbbjBrrAkU=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27419,7 +27420,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const MovieCard = ({ movie , onBookClick  })=>{
+const MovieCard = ({ movie , onMovieClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         onClick: ()=>{
             onMovieClick(movie);
