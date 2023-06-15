@@ -27318,6 +27318,7 @@ const MainView = ()=>{
             description: "In late 18th century France, painter Marianne is commissioned by a countess to paint the wedding portrait of her daughter H\xe9lo\xefse. While posing as her hired companion, Marianne is instructed to complete the portrait in secret. However, intimacy and attraction begin to blossom between both women.",
             director: "C\xe9line Sciamma",
             genre: "drama",
+            imageurl: "https://m.media-amazon.com/images/M/MV5BNjgwNjkwOWYtYmM3My00NzI1LTk5OGItYWY0OTMyZTY4OTg2XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_UY132_CR0,0,89,132_AL_.jpg",
             year: "2019"
         },
         {
@@ -27326,6 +27327,7 @@ const MainView = ()=>{
             description: "Despite the political rivalry between their families, Kena and Ziki resist and remain close friends, supporting each other to pursue their dreams in a conservative society. When love blossoms between them, the two girls will be forced to choose between happiness and safety.",
             director: "Wanuri Kahiu",
             genre: "drama",
+            imageurl: "https://assets.cdn.moviepilot.de/files/559622d60cb835d8019aa922bb8c57fdf47d328bdb07f30a1809d7f2d05c/fill/136/195/rafiki300.jpg",
             year: "2018"
         },
         {
@@ -27334,6 +27336,7 @@ const MainView = ()=>{
             description: "Alexia is a dancer who, after being injured in a car accident as a child, has a titanium plate fitted into her head. Amidst a series of brutal and unexplained murders, her path crosses with Vincent, a firefighter desperately searching for his long-missing son, changing their lives forever.",
             director: "Julia Ducournau",
             genre: "thriller",
+            imageurl: "https://www.jposter.net/images/products/thumbs/b5-titane-th.jpg",
             year: "2021"
         }
     ]);
@@ -27343,14 +27346,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 38,
+        lineNumber: 41,
         columnNumber: 13
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "no movies to see"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 43,
+        lineNumber: 46,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27361,16 +27364,16 @@ const MainView = ()=>{
                 }
             }, movie.movieid, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 49,
+                lineNumber: 52,
                 columnNumber: 13
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 47,
+        lineNumber: 50,
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "+Qi5turVs2ZEvV+YCtbbjBrrAkU=");
+_s(MainView, "z3Itlp0HSyy3DDhngAoj8rDT8Uk=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27456,6 +27459,19 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 const MovieView = ({ movie , onBackClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: movie.imageurl
+                }, void 0, false, {
+                    fileName: "src/components/movie-view/movie-view.jsx",
+                    lineNumber: 5,
+                    columnNumber: 11
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 4,
+                columnNumber: 9
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
