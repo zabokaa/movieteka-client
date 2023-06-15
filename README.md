@@ -5,7 +5,7 @@
 * [objective](#objective)
 * [key features](#key-features)
 * [project status](#project-status)
-* [link to github page](#link-to-github-page)
+* [link to page](#link-to-page)
 * [acknowledgements](#acknowledgements)
 
 ## objective
@@ -38,7 +38,7 @@ Profile view
 ## project status
 - project is: _in progress
 
-## link to github page
+## link to page
 - TBA
 - also check out my repo with the server-side component 
 
