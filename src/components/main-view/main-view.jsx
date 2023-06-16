@@ -47,7 +47,9 @@ export const MainView = () => {
       }
       
     return (
+        
         <div>
+          <h2>Welcome to MOVIETEKA</h2>
           {movies.map((movie) => (
             <MovieCard
               key={movie.movieid}
