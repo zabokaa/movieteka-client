@@ -2,4 +2,16 @@
   color: plum;
 }
 
+button {
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: pink;
+  border-radius: 5px;
+  outline: 0;
+  margin: 10px 0;
+  padding: 5px 15px;
+  box-shadow: 0 2px 2px #d3d3d3;
+}
+
 /*# sourceMappingURL=index.ce1d6491.css.map */

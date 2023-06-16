@@ -3,3 +3,15 @@ $primarycol: plum;
 .movieteka {
     color: $primarycol;
 }
+
+button {
+    background-color: pink; 
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    outline: 0;
+    text-transform: uppercase;
+    margin: 10px 0px;
+    cursor: pointer;
+    box-shadow: 0px 2px 2px lightgray
+  }
