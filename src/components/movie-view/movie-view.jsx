@@ -1,11 +1,8 @@
-import { ReactPropTypes } from "react";
+import PropTypes from "prop-types"; 
 
 export const MovieView = ({ movie , onBackClick}) => {
     return (
       <div>
-        <div>
-          <img src={movie.imageurl} />
-        </div>
         <div>
           <span>title: </span>
           <span>{movie.title}</span>
