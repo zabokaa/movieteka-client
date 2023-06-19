@@ -15,11 +15,11 @@ export const MainView = () => {
         .then((data) => {
           if (Array.isArray(data)) {
             const moviesFromAPI = data.map((movie) => ({
-              id: movie.movieid,
+              id: movie._id,
               title: movie.title,
-              director: movie.director,
+              director: movie.director.name,
               description: movie.description,
-              genre: movie.genre,
+              genre: movie.genre.name,
               year: movie.year
             }));
             setMovies(moviesFromAPI);
@@ -46,7 +46,7 @@ export const MainView = () => {
           <h2>Welcome to MOVIETEKA</h2>
           {movies.map((movie) => (
             <MovieCard
-              key={movie.movieid}
+              key={movie.id}
               movie={movie}
               onMovieClick={(newSelectedMovie) => {
                 setSelectedMovie(newSelectedMovie);
