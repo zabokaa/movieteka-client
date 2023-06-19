@@ -1,3 +1,5 @@
+import { ReactPropTypes } from "react";
+
 export const MovieView = ({ movie , onBackClick}) => {
     return (
       <div>
