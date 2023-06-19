@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
@@ -7,6 +7,14 @@ export const MainView = () => {
     const [movies, setMovies] = useState([ ]);
 
     const [selectedMovie, setSelectedMovie] = useState(null);
+    // use effect hook:
+    useEffect(() => {
+      fetch("https://movieteka-zabokaa.herokuapp.com/movies")
+        .then((response) => response.json())
+        .then ((data) => {
+          console.log("movies array:", data);
+        })
+    }, []);
 
     if (selectedMovie) {
         return (
