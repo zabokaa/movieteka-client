@@ -34,7 +34,7 @@ export const MovieView = ({ movie , onBackClick }) => {
       description: PropTypes.string,
       director: PropTypes.string.isRequired,
       genre: PropTypes.string.isRequired,
-      year: PropTypes.date
+      year: PropTypes.number.isRequired
     }).isRequired,
     onBackClick: PropTypes.func.isRequired
   };

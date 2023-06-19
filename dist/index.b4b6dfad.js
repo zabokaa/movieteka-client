@@ -28349,7 +28349,7 @@ MovieView.propTypes = {
         description: (0, _propTypesDefault.default).string,
         director: (0, _propTypesDefault.default).string.isRequired,
         genre: (0, _propTypesDefault.default).string.isRequired,
-        year: (0, _propTypesDefault.default).date
+        year: (0, _propTypesDefault.default).number.isRequired
     }).isRequired,
     onBackClick: (0, _propTypesDefault.default).func.isRequired
 };
