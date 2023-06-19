@@ -11,19 +11,21 @@ export const MainView = () => {
     useEffect(() => {
       fetch("https://movieteka-zabokaa.herokuapp.com/movies")
         .then((response) => response.json())
-        .then ((data) => {
-          const moviesFromAPI = data.docs.map((doc) => {
-            return {
-              id: doc.key,
-              title: doc.title,
-              director: doc.director,
-              genre: doc.genre,
-              year: doc.year
-            }
+        .then((data) => {
+          if (Array.isArray(data)) {
+            const moviesFromAPI = data.map((movie) => ({
+              id: movie.movieid,
+              title: movie.title,
+              director: movie.director,
+              genre: movie.genre,
+              year: movie.year
+            }));
+            setMovies(moviesFromAPI);
           }
-          )
-          setMovies(moviesFromAPI);
         })
+        .catch((error) => {
+          console.error("Error fetching movies:", error);
+        });
     }, []);
 
     if (selectedMovie) {

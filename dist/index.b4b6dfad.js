@@ -27178,16 +27178,18 @@ const MainView = ()=>{
     // use effect hook:
     (0, _react.useEffect)(()=>{
         fetch("https://movieteka-zabokaa.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
-            const moviesFromAPI = data.docs.map((doc)=>{
-                return {
-                    id: doc.key,
-                    title: doc.title,
-                    director: doc.director,
-                    genre: doc.genre,
-                    year: doc.year
-                };
-            });
-            setMovies(moviesFromAPI);
+            if (Array.isArray(data)) {
+                const moviesFromAPI = data.map((movie)=>({
+                        id: movie.movieid,
+                        title: movie.title,
+                        director: movie.director,
+                        genre: movie.genre,
+                        year: movie.year
+                    }));
+                setMovies(moviesFromAPI);
+            }
+        }).catch((error)=>{
+            console.error("Error fetching movies:", error);
         });
     }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27195,14 +27197,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 31,
+        lineNumber: 33,
         columnNumber: 13
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "no movies to see"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 38,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27211,7 +27213,7 @@ const MainView = ()=>{
                 children: "Welcome to MOVIETEKA"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 42,
+                lineNumber: 44,
                 columnNumber: 11
             }, undefined),
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
@@ -27221,13 +27223,13 @@ const MainView = ()=>{
                     }
                 }, movie.movieid, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 44,
+                    lineNumber: 46,
                     columnNumber: 13
                 }, undefined))
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 43,
         columnNumber: 9
     }, undefined);
 };
