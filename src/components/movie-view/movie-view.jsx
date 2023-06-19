@@ -1,6 +1,15 @@
 import PropTypes from "prop-types"; 
+import { useState } from "react";
 
-export const MovieView = ({ movie , onBackClick }) => {
+export const MovieView = ({ movie , onBackClick, movies }) => {
+    const [sameDirector, setSameDirector] = useState([ ]);
+    const sameDirectorClick = () => {
+      const moviesSameDirector = movies.filter(
+        (m) => m.director == movie.director.name
+      );
+    setSameDirector(moviesSameDirector);
+    }
+
     return (
       <div>
         <div>
@@ -23,6 +32,17 @@ export const MovieView = ({ movie , onBackClick }) => {
           <span>year: </span>
           <span>{movie.year}</span>
         </div>
+        <button onClick={sameDirectorClick}>find movies</button>
+          {sameDirector.length > 0 && (
+          <div>
+            <h3>movies from same director:</h3>
+              {sameDirector.map((movie) => (
+              <div key={movie.id}>
+                <span>{movie.title}</span>
+              </div>
+            ))}
+          </div>
+        )}
         <button onClick={onBackClick}>Back</button>
       </div>
     );
