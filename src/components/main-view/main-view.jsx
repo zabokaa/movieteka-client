@@ -12,7 +12,17 @@ export const MainView = () => {
       fetch("https://movieteka-zabokaa.herokuapp.com/movies")
         .then((response) => response.json())
         .then ((data) => {
-          console.log("movies array:", data);
+          const moviesFromAPI = data.docs.map((doc) => {
+            return {
+              id: doc.key,
+              title: doc.title,
+              director: doc.director,
+              genre: doc.genre,
+              year: doc.year
+            }
+          }
+          )
+          setMovies(moviesFromAPI);
         })
     }, []);
 

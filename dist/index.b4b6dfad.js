@@ -27178,7 +27178,16 @@ const MainView = ()=>{
     // use effect hook:
     (0, _react.useEffect)(()=>{
         fetch("https://movieteka-zabokaa.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
-            console.log("movies array:", data);
+            const moviesFromAPI = data.docs.map((doc)=>{
+                return {
+                    id: doc.key,
+                    title: doc.title,
+                    director: doc.director,
+                    genre: doc.genre,
+                    year: doc.year
+                };
+            });
+            setMovies(moviesFromAPI);
         });
     }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27186,14 +27195,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 21,
+        lineNumber: 31,
         columnNumber: 13
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "no movies to see"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 26,
+        lineNumber: 36,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27202,7 +27211,7 @@ const MainView = ()=>{
                 children: "Welcome to MOVIETEKA"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 32,
+                lineNumber: 42,
                 columnNumber: 11
             }, undefined),
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
@@ -27212,13 +27221,13 @@ const MainView = ()=>{
                     }
                 }, movie.movieid, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 34,
+                    lineNumber: 44,
                     columnNumber: 13
                 }, undefined))
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 31,
+        lineNumber: 41,
         columnNumber: 9
     }, undefined);
 };
