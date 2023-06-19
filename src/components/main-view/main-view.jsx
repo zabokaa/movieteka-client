@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import PropTypes from "prop-types"; 
 
 export const MainView = () => {
 // movieid, title, description, directorid, genreid, imageurl, featured, year
@@ -17,6 +18,7 @@ export const MainView = () => {
               id: movie.movieid,
               title: movie.title,
               director: movie.director,
+              description: movie.description,
               genre: movie.genre,
               year: movie.year
             }));
