@@ -13,7 +13,11 @@ export const MainView = () => {
 
     // use effect hook:
     useEffect(() => {
-      fetch("https://movieteka-zabokaa.herokuapp.com/movies")
+      if (!token) {
+        return;
+      }
+      fetch("https://movieteka-zabokaa.herokuapp.com/movies", 
+      { headers: {Authorization: `Bearer ${token}`}})
         .then((response) => response.json())
         .then((data) => {
           if (Array.isArray(data)) {
@@ -27,7 +31,7 @@ export const MainView = () => {
             }));
             setMovies(moviesFromAPI);
           }
-        })
+        } , [token])
         .catch((error) => {
           console.error("Error fetching movies:", error);
         });
@@ -71,9 +75,8 @@ export const MainView = () => {
               }}
             />
           ))}
-          <button onClick={ () => { setUser(null); }}>logout</button>
-        </div>
-        
+          <button onClick={ () => { setUser(null); setToken(null)}}>logout</button>
+        </div>      
       </>
     );
 }
