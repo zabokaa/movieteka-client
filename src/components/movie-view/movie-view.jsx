@@ -13,23 +13,23 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
     return (
       <div>
         <div>
-          <span>title: </span>
+          <span className="kat" > title: </span>
           <span>{movie.title}</span>
         </div>
         <div>
-          <span>description: </span>
+          <span className="kat" >description: </span>
           <span>{movie.description}</span>
         </div>
         <div>
-          <span>director: </span>
+          <span className="kat" >director: </span>
           <span>{movie.director}</span>
         </div>
         <div>
-          <span>genre: </span>
+          <span className="kat" >genre: </span>
           <span>{movie.genre}</span>
         </div>
         <div>
-          <span>year: </span>
+          <span className="kat" >year: </span>
           <span>{movie.year}</span>
         </div>
         <button onClick={sameDirectorClick}>find movies</button>

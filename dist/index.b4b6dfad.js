@@ -28229,7 +28229,8 @@ const MovieView = ({ movie , onBackClick , movies  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "title: "
+                        className: "kat",
+                        children: " title: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 16,
@@ -28251,6 +28252,7 @@ const MovieView = ({ movie , onBackClick , movies  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        className: "kat",
                         children: "description: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
@@ -28273,6 +28275,7 @@ const MovieView = ({ movie , onBackClick , movies  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        className: "kat",
                         children: "director: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
@@ -28295,6 +28298,7 @@ const MovieView = ({ movie , onBackClick , movies  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        className: "kat",
                         children: "genre: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
@@ -28317,6 +28321,7 @@ const MovieView = ({ movie , onBackClick , movies  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        className: "kat",
                         children: "year: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
