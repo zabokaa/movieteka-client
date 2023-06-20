@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view";
 import PropTypes from "prop-types"; 
 
 export const MainView = () => {
 // movieid, title, description, directorid, genreid, imageurl, featured, year
-    const [movies, setMovies] = useState([ ]);
+  const [movies, setMovies] = useState([ ]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
 
-    const [selectedMovie, setSelectedMovie] = useState(null);
     // use effect hook:
     useEffect(() => {
       fetch("https://movieteka-zabokaa.herokuapp.com/movies")
@@ -29,6 +31,11 @@ export const MainView = () => {
           console.error("Error fetching movies:", error);
         });
     }, []);
+
+    // loginView:
+    if (!user) {
+      return <LoginView />
+    }
 
     if (selectedMovie) {
         return (
