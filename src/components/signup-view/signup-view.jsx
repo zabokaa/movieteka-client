@@ -5,14 +5,38 @@ export const SignupView = () => {
     const [password, setPassword] = useState(" ");
     const [email, setEmail] = useState(" ");
     const [bday, setBday] = useState(" ");
-    const handleSubmit = (s) => {}
+    const handleSubmit = (s) => {
+        s.preventDefault();
+        const data = {
+            username: username,
+            password: password,
+            email: email,
+            birthday: bday
+          };
+      
+          fetch("SIGNUP_URL", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }).then((response) => {
+            if (response.ok) {
+              alert("signup successful");
+              window.location.reload();
+            } else {
+              alert("signup failed");
+            }
+          });
+        };
+    
 
     return (
         <form onSubmit={handleSubmit}>
             <button type="submit">sign up</button>
             <br></br>
             <label>
-                Username:
+                username:
                 <input
                 type="text"
                 value={username}
@@ -51,5 +75,5 @@ export const SignupView = () => {
                 />
             </label>    
         </form>
-    )
+    );
 };
