@@ -18,7 +18,9 @@ export const LoginView = () => {
         })  .then((response) => response.json())
             .then((data) => {
               console.log("Login response: ", data);
-                if (data.user) {
+                if (data.user) { //keep in local storage:
+                  localStorage.setItem("user", JSON.stringify(data.user))
+                  localStorage.setItem("token", data.token)
                   onLoggedIn(data.user, data.token); //send token 
               } else {
                   alert("no such user");

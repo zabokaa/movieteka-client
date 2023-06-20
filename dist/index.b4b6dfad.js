@@ -27180,6 +27180,8 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [user, setUser] = (0, _react.useState)(null);
     const [token, setToken] = (0, _react.useState)(null);
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
     // use effect hook:
     (0, _react.useEffect)(()=>{
         if (!token) return;
@@ -27199,12 +27201,12 @@ const MainView = ()=>{
                     }));
                 setMovies(moviesFromAPI);
             }
-        }, [
-            token
-        ]).catch((error)=>{
+        }).catch((error)=>{
             console.error("Error fetching movies:", error);
         });
-    }, []);
+    }, [
+        token
+    ]); //OR SHOULD THE TOKEN BE HERE ?!
     // loginView:
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
         onLoggedIn: (user, token)=>{
@@ -27213,7 +27215,7 @@ const MainView = ()=>{
         }
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 43,
+        lineNumber: 45,
         columnNumber: 13
     }, undefined);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27222,14 +27224,14 @@ const MainView = ()=>{
         movies: movies
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 53,
+        lineNumber: 55,
         columnNumber: 13
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "no movies to see"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 62,
+        lineNumber: 64,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -27239,7 +27241,7 @@ const MainView = ()=>{
                     children: "Welcome to MOVIETEKA"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 68,
+                    lineNumber: 70,
                     columnNumber: 11
                 }, undefined),
                 movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
@@ -27249,24 +27251,25 @@ const MainView = ()=>{
                         }
                     }, movie.id, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 70,
+                        lineNumber: 72,
                         columnNumber: 13
                     }, undefined)),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     onClick: ()=>{
                         setUser(null);
                         setToken(null);
+                        localStorage.clear();
                     },
                     children: "logout"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 78,
+                    lineNumber: 80,
                     columnNumber: 11
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 67,
+            lineNumber: 69,
             columnNumber: 9
         }, undefined)
     }, void 0, false);
@@ -28477,8 +28480,11 @@ const LoginView = ()=>{
             body: JSON.stringify(data)
         }).then((response)=>response.json()).then((data)=>{
             console.log("Login response: ", data);
-            if (data.user) onLoggedIn(data.user, data.token); //send token 
-            else alert("no such user");
+            if (data.user) {
+                localStorage.setItem("user", JSON.stringify(data.user));
+                localStorage.setItem("token", data.token);
+                onLoggedIn(data.user, data.token); //send token 
+            } else alert("no such user");
         }).catch((e)=>{
             alert("something went wrong!");
         });
@@ -28496,13 +28502,13 @@ const LoginView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 36,
+                        lineNumber: 38,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 34,
+                lineNumber: 36,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28515,13 +28521,13 @@ const LoginView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 45,
+                        lineNumber: 47,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 43,
+                lineNumber: 45,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28529,13 +28535,13 @@ const LoginView = ()=>{
                 children: "go !"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 52,
+                lineNumber: 54,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 33,
+        lineNumber: 35,
         columnNumber: 7
     }, undefined);
 };

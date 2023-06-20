@@ -10,6 +10,8 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
 
     // use effect hook:
     useEffect(() => {
@@ -31,11 +33,11 @@ export const MainView = () => {
             }));
             setMovies(moviesFromAPI);
           }
-        } , [token])
+        })
         .catch((error) => {
           console.error("Error fetching movies:", error);
         });
-    }, []);
+    }, [token]);  //OR SHOULD THE TOKEN BE HERE ?!
 
     // loginView:
     if (!user) {
@@ -75,7 +77,11 @@ export const MainView = () => {
               }}
             />
           ))}
-          <button onClick={ () => { setUser(null); setToken(null)}}>logout</button>
+          <button onClick={ () => { 
+            setUser(null); 
+            setToken(null);
+            localStorage.clear();
+            }}>logout</button>
         </div>      
       </>
     );
