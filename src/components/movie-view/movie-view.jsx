@@ -5,10 +5,10 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
     const [sameDirector, setSameDirector] = useState([ ]);
     const sameDirectorClick = () => {
       const moviesSameDirector = movies.filter(
-        (m) => m.director == movie.director.name
+        (m) => m.director === movie.director
       );
-    setSameDirector(moviesSameDirector);
-    }
+      setSameDirector(moviesSameDirector);
+    };
 
     return (
       <div>
