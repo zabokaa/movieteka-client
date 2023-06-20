@@ -27221,31 +27221,43 @@ const MainView = ()=>{
         lineNumber: 51,
         columnNumber: 16
     }, undefined);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: "Welcome to MOVIETEKA"
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 57,
-                columnNumber: 11
-            }, undefined),
-            movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                    movie: movie,
-                    onMovieClick: (newSelectedMovie)=>{
-                        setSelectedMovie(newSelectedMovie);
-                    }
-                }, movie.id, false, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    children: "Welcome to MOVIETEKA"
+                }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 59,
-                    columnNumber: 13
-                }, undefined))
-        ]
-    }, void 0, true, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 56,
-        columnNumber: 9
-    }, undefined);
+                    lineNumber: 57,
+                    columnNumber: 11
+                }, undefined),
+                movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                        movie: movie,
+                        onMovieClick: (newSelectedMovie)=>{
+                            setSelectedMovie(newSelectedMovie);
+                        }
+                    }, movie.id, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 59,
+                        columnNumber: 13
+                    }, undefined)),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    onClick: ()=>{
+                        setUser(null);
+                    },
+                    children: "logout"
+                }, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 67,
+                    columnNumber: 11
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/main-view/main-view.jsx",
+            lineNumber: 56,
+            columnNumber: 9
+        }, undefined)
+    }, void 0, false);
 };
 _s(MainView, "o2ZtLDOKRJAXn1qWXYzpVAZJb6c=");
 _c = MainView;
@@ -28519,6 +28531,6 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"lJZlQ":[function() {},{}]},["4s3Ar","1xC6H","d8Dch"], "d8Dch", "parcelRequireeec1")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lJZlQ":[function() {},{}]},["4s3Ar","1xC6H","d8Dch"], "d8Dch", "parcelRequireeec1")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
