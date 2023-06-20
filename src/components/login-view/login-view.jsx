@@ -1,15 +1,41 @@
+import { useState } from "react";
+
 export const LoginView = () => {
+    const [username, setUsername] = useState(" ");
+    const [password, setPassword] = useState(" ");
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = {
+            access: username,
+            secret: password
+        };
+        fetch("https://movieteka-zabokaa.herokuapp.com/users", {
+            method: "POST",
+            body: JSON.stringify(data)
+        })  .then((response) => {
+            if (response.ok) {
+                onLoggedIn(username);
+            } else {
+                alert("login failed");
+            }
+        })
+    };
+
     return (
-      <form>
+      <form onSubmit={handleSubmit}> 
         <label>
-          Username:
+          username:
           <input type="text" />
         </label>
         <label>
-          Password:
-          <input type="password" />
+          password:
+          <input 
+            type="password" 
+            value={password}
+            onChange={(ev) => setPassword(ev.target.value)}
+        />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">go !</button>
       </form>
     );
   };
