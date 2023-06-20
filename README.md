@@ -13,14 +13,14 @@
 
 ## key features
 *main view*
-- returns ALL movies to the user (each movie item with an image, title, and description)
-- filtering the list of movies with a “search” feature
+- returns ALL movies to the user (each movie item with title)
+- filtering the list of movies with a “search” feature (by director)
 - ability to select a movie for more details
 - ability to log out
 - ability to navigate to Profile view
 
 *single movie view*
-- returns data (description, genre, director, image) about a single movie to the user
+- returns data (description, genre, director, year) about a single movie to the user
 - allows users to add a movie to their list of favorites
 
 *login view*
