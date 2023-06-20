@@ -27179,6 +27179,7 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [user, setUser] = (0, _react.useState)(null);
+    const [token, setToken] = (0, _react.useState)(null);
     // use effect hook:
     (0, _react.useEffect)(()=>{
         fetch("https://movieteka-zabokaa.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
@@ -27199,11 +27200,14 @@ const MainView = ()=>{
     }, []);
     // loginView:
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-        onLoggedIn: (user)=>setUser(user)
+        onLoggedIn: (user, token)=>{
+            setUser(user);
+            setToken(token);
+        }
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 37,
-        columnNumber: 14
+        lineNumber: 39,
+        columnNumber: 13
     }, undefined);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
@@ -27211,14 +27215,14 @@ const MainView = ()=>{
         movies: movies
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 42,
+        lineNumber: 49,
         columnNumber: 13
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "no movies to see"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 51,
+        lineNumber: 58,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -27228,7 +27232,7 @@ const MainView = ()=>{
                     children: "Welcome to MOVIETEKA"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 57,
+                    lineNumber: 64,
                     columnNumber: 11
                 }, undefined),
                 movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
@@ -27238,7 +27242,7 @@ const MainView = ()=>{
                         }
                     }, movie.id, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 59,
+                        lineNumber: 66,
                         columnNumber: 13
                     }, undefined)),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27248,18 +27252,18 @@ const MainView = ()=>{
                     children: "logout"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 67,
+                    lineNumber: 74,
                     columnNumber: 11
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 56,
+            lineNumber: 63,
             columnNumber: 9
         }, undefined)
     }, void 0, false);
 };
-_s(MainView, "o2ZtLDOKRJAXn1qWXYzpVAZJb6c=");
+_s(MainView, "42tuj5PituOMTewPCxUhPl90Tb0=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -28457,12 +28461,18 @@ const LoginView = ()=>{
             access: username,
             secret: password
         };
-        fetch("https://movieteka-zabokaa.herokuapp.com/users", {
+        fetch("https://movieteka-zabokaa.herokuapp.com/login", {
             method: "POST",
+            headers: {
+                "Consent-Type": "application/json"
+            },
             body: JSON.stringify(data)
-        }).then((response)=>{
-            if (response.ok) onLoggedIn(username);
-            else alert("login failed");
+        }).then((response)=>response.json()).then((data)=>{
+            console.log("Login response: ", data);
+            if (data.user) onLoggedIn(data.user, data.token); //send token 
+            else alert("no such user");
+        }).catch((e)=>{
+            alert("something went wrong!");
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -28478,13 +28488,13 @@ const LoginView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 28,
+                        lineNumber: 36,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 26,
+                lineNumber: 34,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28497,13 +28507,13 @@ const LoginView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 37,
+                        lineNumber: 45,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 35,
+                lineNumber: 43,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28511,13 +28521,13 @@ const LoginView = ()=>{
                 children: "go !"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 44,
+                lineNumber: 52,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 25,
+        lineNumber: 33,
         columnNumber: 7
     }, undefined);
 };

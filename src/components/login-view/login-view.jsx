@@ -9,16 +9,24 @@ export const LoginView = () => {
             access: username,
             secret: password
         };
-        fetch("https://movieteka-zabokaa.herokuapp.com/users", {
+        fetch("https://movieteka-zabokaa.herokuapp.com/login", {
             method: "POST",
+            headers: {
+              "Consent-Type": "application/json"
+            },
             body: JSON.stringify(data)
-        })  .then((response) => {
-            if (response.ok) {
-                onLoggedIn(username);
-            } else {
-                alert("login failed");
-            }
+        })  .then((response) => response.json())
+            .then((data) => {
+              console.log("Login response: ", data);
+                if (data.user) {
+                  onLoggedIn(data.user, data.token); //send token 
+              } else {
+                  alert("no such user");
+          }
         })
+            .catch((e) => {
+              alert("something went wrong!");
+        });
     };
 
     return (
