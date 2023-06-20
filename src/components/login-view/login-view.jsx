@@ -3,8 +3,8 @@ import { useState } from "react";
 export const LoginView = () => {
     const [username, setUsername] = useState(" ");
     const [password, setPassword] = useState(" ");
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (s) => {
+        s.preventDefault();
         const data = {
             access: username,
             secret: password
@@ -25,14 +25,20 @@ export const LoginView = () => {
       <form onSubmit={handleSubmit}> 
         <label>
           username:
-          <input type="text" />
+          <input 
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            />
         </label>
         <label>
           password:
           <input 
             type="password" 
             value={password}
-            onChange={(ev) => setPassword(ev.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
+            required
         />
         </label>
         <button type="submit">go !</button>

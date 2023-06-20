@@ -28439,8 +28439,8 @@ const LoginView = ()=>{
     _s();
     const [username, setUsername] = (0, _react.useState)(" ");
     const [password, setPassword] = (0, _react.useState)(" ");
-    const handleSubmit = (e)=>{
-        e.preventDefault();
+    const handleSubmit = (s)=>{
+        s.preventDefault();
         const data = {
             access: username,
             secret: password
@@ -28460,7 +28460,10 @@ const LoginView = ()=>{
                 children: [
                     "username:",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text"
+                        type: "text",
+                        value: username,
+                        onChange: (e)=>setUsername(e.target.value),
+                        required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
                         lineNumber: 28,
@@ -28478,16 +28481,17 @@ const LoginView = ()=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         type: "password",
                         value: password,
-                        onChange: (ev)=>setPassword(ev.target.value)
+                        onChange: (e)=>setPassword(e.target.value),
+                        required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 32,
+                        lineNumber: 37,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 30,
+                lineNumber: 35,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28495,7 +28499,7 @@ const LoginView = ()=>{
                 children: "go !"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 38,
+                lineNumber: 44,
                 columnNumber: 9
             }, undefined)
         ]
