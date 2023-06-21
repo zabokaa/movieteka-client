@@ -13,8 +13,7 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
     return (
       <div>
         <div>
-          {/* still need to fix, img tag didnt work neither */}
-          <iframe src={movie.imagePath}/>  
+          <img src={movie.image}/>  
         </div>
         <div>
           <span className="kat" > title: </span>
