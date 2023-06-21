@@ -33,6 +33,7 @@ export const LoginView = () => {
     };
 
     return (
+      <>
       <form onSubmit={handleSubmit}> 
         <label>
           username:
@@ -54,7 +55,8 @@ export const LoginView = () => {
         </label>
         <button type="submit">go !</button>
         <br></br>
-        <SignupView />
       </form>
+      <SignupView />
+      </>
     );
   };
