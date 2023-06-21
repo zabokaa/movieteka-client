@@ -28,6 +28,9 @@ export const MainView = () => {
               image: movie.imagePath,
               title: movie.title,
               director: movie.director.name,
+              byear: movie.director.birthyear,
+              gender: movie.director.gender,
+              bio: movie.director.bio,
               description: movie.description,
               genre: movie.genre.name,
               year: movie.year

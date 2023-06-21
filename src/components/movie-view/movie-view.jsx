@@ -20,6 +20,14 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
           <span>{movie.title}</span>
         </div>
         <div>
+          <span className="kat" >genre: </span>
+          <span>{movie.genre}</span>
+        </div>
+        <div>
+          <span className="kat" >year: </span>
+          <span>{movie.year}</span>
+        </div>
+        <div>
           <span className="kat" >description: </span>
           <span>{movie.description}</span>
         </div>
@@ -28,13 +36,18 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
           <span>{movie.director}</span>
         </div>
         <div>
-          <span className="kat" >genre: </span>
-          <span>{movie.genre}</span>
+          <span className="kat" >born: </span>
+          <span>{movie.byear}</span>
         </div>
         <div>
-          <span className="kat" >year: </span>
-          <span>{movie.year}</span>
+          <span className="kat" >gender: </span>
+          <span>{movie.gender}</span>
         </div>
+        <div>
+          <span className="kat" >bio: </span>
+          <span>{movie.bio}</span>
+        </div>
+        
         <button onClick={sameDirectorClick}>find movies</button>
           {sameDirector.length > 0 && (
           <div>
