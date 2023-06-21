@@ -1,25 +1,29 @@
-$primarycol: plum;
+$primary: plum;
+$body-bg: LavenderBlush;
 
-.movieteka {
-    color: $primarycol;
-}
+@import '~bootstrap/scss/bootstrap.scss';
 
-button {
-    background-color: $primarycol; 
-    color: white;
-    padding: 5px 15px;
-    border-radius: 5px;
-    outline: 0;
-    text-transform: uppercase;
-    margin: 10px 0px;
-    cursor: pointer;
-    box-shadow: 0px 2px 2px lightgray
-  }
 
-  h2 {
-    color: $primarycol
-  }
+// .movieteka {
+//     color: $primarycol;
+// }
 
-  .kat {
-    color: $primarycol;
-  }
+// button {
+//     background-color: $primarycol; 
+//     color: white;
+//     padding: 5px 15px;
+//     border-radius: 5px;
+//     outline: 0;
+//     text-transform: uppercase;
+//     margin: 10px 0px;
+//     cursor: pointer;
+//     box-shadow: 0px 2px 2px lightgray
+//   }
+
+//   h2 {
+//     color: $primarycol
+//   }
+
+//   .kat {
+//     color: $primarycol;
+//   }
