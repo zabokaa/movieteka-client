@@ -2,8 +2,8 @@ import { useState } from "react";
 import { SignupView } from "../signup-view/signup-view";
 
 export const LoginView = () => {
-    const [username, setUsername] = useState(" ");
-    const [password, setPassword] = useState(" ");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const handleSubmit = (s) => {
         s.preventDefault();
         const data = {

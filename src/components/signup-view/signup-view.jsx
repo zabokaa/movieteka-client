@@ -1,17 +1,15 @@
 import { useState } from "react";
 
 export const SignupView = () => {
-    const [username, setUsername] = useState(" ");
-    const [password, setPassword] = useState(" ");
-    const [email, setEmail] = useState(" ");
-    const [bday, setBday] = useState(" ");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const handleSubmit = (s) => {
         s.preventDefault();
         const data = {
             username: username,
             password: password,
-            email: email,
-            birthday: bday
+            email: email
           };
       
           fetch("SIGNUP_URL", {
@@ -65,15 +63,6 @@ export const SignupView = () => {
                 required
                 />
             </label>
-            <br></br>
-            <label>
-                birthday:
-                <input
-                type="date"
-                value={bday}
-                onChange={(e) => setBday(e.target.value)}
-                />
-            </label>    
         </form>
     );
 };
