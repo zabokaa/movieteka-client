@@ -28476,7 +28476,7 @@ const LoginView = ()=>{
         fetch("https://movieteka-zabokaa.herokuapp.com/login", {
             method: "POST",
             headers: {
-                "Consent-Type": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
         }).then((response)=>response.json()).then((data)=>{
