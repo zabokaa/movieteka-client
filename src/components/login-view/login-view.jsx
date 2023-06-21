@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { SignupView } from "../signup-view/signup-view";
 
-export const LoginView = () => {
+export const LoginView = ({ onLoggedIn }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    
     const handleSubmit = (s) => {
         s.preventDefault();
         const data = {
-            access: username,
-            secret: password
+            username: username,
+            password: password
         };
         fetch("https://movieteka-zabokaa.herokuapp.com/login", {
             method: "POST",

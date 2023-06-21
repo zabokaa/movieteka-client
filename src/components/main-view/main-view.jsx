@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 export const MainView = () => {
 // movieid, title, description, directorid, genreid, imageurl, featured, year
-  const [movies, setMovies] = useState([ ]);
+  const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
