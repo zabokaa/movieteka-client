@@ -25,6 +25,7 @@ export const MainView = () => {
           if (Array.isArray(data)) {
             const moviesFromAPI = data.map((movie) => ({
               id: movie._id,
+              img: movie.imagePath,
               title: movie.title,
               director: movie.director.name,
               description: movie.description,

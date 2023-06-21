@@ -13,6 +13,10 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
     return (
       <div>
         <div>
+          {/* still need to fix, img tag didnt work neither */}
+          <iframe src={movie.imagePath}/>  
+        </div>
+        <div>
           <span className="kat" > title: </span>
           <span>{movie.title}</span>
         </div>
@@ -54,7 +58,7 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
       description: PropTypes.string,
       director: PropTypes.string.isRequired,
       genre: PropTypes.string.isRequired,
-      year: PropTypes.number.isRequired
+      year: PropTypes.string.isRequired
     }).isRequired,
     onBackClick: PropTypes.func.isRequired
   };
