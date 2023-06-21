@@ -1,7 +1,9 @@
 import { createRoot } from 'react-dom/client';
 import { MainView } from "./components/main-view/main-view";
-// Import statement to indicate that you need to bundle `./index.scss`
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
+/* The following line can be included in your src/index.js or App.js file */
+
 
 const MovietekaApp = () => {
   return <MainView />;
