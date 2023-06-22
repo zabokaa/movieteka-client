@@ -10,84 +10,90 @@ import CardGroup from 'react-bootstrap/CardGroup';
 //   
 
 export const LoginView = ({ onLoggedIn }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    
-    const handleSubmit = (s) => {
-        s.preventDefault();
-        const data = {
-            username: username,
-            password: password
-        };
-        fetch("https://movieteka-zabokaa.herokuapp.com/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })  .then((response) => response.json())
-            .then((data) => {
-              console.log("Login response: ", data);
-                if (data.user) { //keep in local storage:
-                  localStorage.setItem("user", JSON.stringify(data.user))
-                  localStorage.setItem("token", data.token)
-                  onLoggedIn(data.user, data.token); //send token 
-              } else {
-                  alert("no such user");
-          }
-        })
-            .catch((e) => {
-              alert("something went wrong!");
-        });
-    };
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-    return (
-      <>
+  const handleSubmit = (s) => {
+    s.preventDefault();
+    const data = {
+      username: username,
+      password: password
+    };
+    fetch("https://movieteka-zabokaa.herokuapp.com/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then((response) => response.json())
+      .then((data) => {
+        console.log("Login response: ", data);
+        if (data.user) { //keep in local storage:
+          localStorage.setItem("user", JSON.stringify(data.user))
+          localStorage.setItem("token", data.token)
+          onLoggedIn(data.user, data.token); //send token 
+        } else {
+          alert("no such user");
+        }
+      })
+      .catch((e) => {
+        alert("something went wrong!");
+      });
+  };
+
+  return (
+    <>
       <Container>
         <Row>
           <Col>
-            <Form> 
-              <Form.Group className="mb-3"> 
-              
-                  <Form.Label>username:</Form.Label>
+            <Card style={{ marginTop: 80, marginBottom: 100}}>
+              <Card.Body>
+                <Card.Title style={{ textAlign: "center"}}>welcome to MOVIETEKA</Card.Title>
+                <Form>
+                  <Form.Group className="mb-3" controlId="formGroupUsername">
 
-                  <Form.Control
+                    <Form.Label>username:</Form.Label>
+
+                    <Form.Control
                       type="text"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       required
                       placeholder="your username"
-                  /> 
+                    />
 
-                  <Form.Text></Form.Text>
+                    <Form.Text></Form.Text>
 
-              </Form.Group>
+                  </Form.Group>
 
-              <Form.Group className="mb-3"> 
-              
-                  <Form.Label>username:</Form.Label>
+                  <Form.Group className="mb-3" controlId="formGrouopUsername">
 
-                  <Form.Control
-                        type="password" 
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        placeholder="password"
-                  /> 
+                    <Form.Label>username:</Form.Label>
 
-                  <Form.Text></Form.Text>
+                    <Form.Control
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      placeholder="password"
+                    />
 
-              </Form.Group>
-            <Button className="button" type="submit" onSubmit={handleSubmit} > go !</Button>
-           </Form>
+                    <Form.Text></Form.Text>
+
+                  </Form.Group>
+                  <Button className="button" type="submit" onSubmit={handleSubmit} > go !</Button>
+                </Form>
+              </Card.Body>
+            </Card>
+
           </Col>
         </Row>
 
       </Container>
 
       <Container>
-          <SignupView />
+        <SignupView />
       </Container>
-      </>
-    );
-  };
+    </>
+  );
+};
