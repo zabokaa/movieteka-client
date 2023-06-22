@@ -40,12 +40,12 @@ export const SignupView = () => {
   return (
     <>
       <Container fluid="md">
-        <Row>
-          <Col>
+        {/* <Row>
+          <Col> */}
             <Card>
               <Card.Body>
                 <Card.Title>SIGN UP! it's quick + easy </Card.Title>
-                <Form>
+                <Form onSubmit={handleSubmit} >
                   <Form.Group className="mb-3" controlId="formGroupUsername">
 
                     <Form.Label>username:</Form.Label>
@@ -99,8 +99,8 @@ export const SignupView = () => {
               </Card.Body>
             </Card>
 
-          </Col>
-        </Row>
+          {/* </Col>
+        </Row> */}
 
       </Container>
     </>
