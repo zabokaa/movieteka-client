@@ -43,12 +43,12 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     <>
-      <Container>
+      <Container fluid="md">
         <Row>
           <Col>
-            <Card style={{ marginTop: 80, marginBottom: 100}}>
+            <Card style={{ marginTop: 80, marginBottom: 100 }}>
               <Card.Body>
-                <Card.Title style={{ textAlign: "center"}}>welcome to MOVIETEKA</Card.Title>
+                <Card.Title style={{ textAlign: "center" }}>welcome to MOVIETEKA</Card.Title>
                 <Form>
                   <Form.Group className="mb-3" controlId="formGroupUsername">
 
@@ -68,14 +68,14 @@ export const LoginView = ({ onLoggedIn }) => {
 
                   <Form.Group className="mb-3" controlId="formGrouopUsername">
 
-                    <Form.Label>username:</Form.Label>
+                    <Form.Label>password:</Form.Label>
 
                     <Form.Control
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      placeholder="password"
+                      placeholder="your password"
                     />
 
                     <Form.Text></Form.Text>
