@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 export const SignupView = () => {
     const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ export const SignupView = () => {
             email: email
           };
       
-          fetch("SIGNUP_URL", {
+          fetch("https://movieteka-zabokaa.herokuapp.com/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -31,7 +32,7 @@ export const SignupView = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <button type="submit">sign up</button>
+            <Button className="button" type="submit">sign up</Button>
             <br></br>
             <label>
                 username:

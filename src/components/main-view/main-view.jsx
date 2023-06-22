@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import PropTypes from "prop-types"; 
+import { Button } from "react-bootstrap";
 
 export const MainView = () => {
 // movieid, title, description, directorid, genreid, imageurl, featured, year
@@ -81,11 +82,11 @@ export const MainView = () => {
               }}
             />
           ))}
-          <button onClick={ () => { 
+          <Button className="button" onClick={ () => { 
             setUser(null); 
             setToken(null);
             localStorage.clear();
-            }}>logout</button>
+            }}>logout</Button>
         </div>      
       </>
     );

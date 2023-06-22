@@ -1,5 +1,6 @@
 import PropTypes from "prop-types"; 
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 export const MovieView = ({ movie , onBackClick, movies }) => {
     const [sameDirector, setSameDirector] = useState([ ]);
@@ -40,7 +41,7 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
           <span>{movie.byear}</span>
         </div>
         <div>
-          <span className="kat" >gender: </span>
+          <span className="kat" >gender: </span>    
           <span>{movie.gender}</span>
         </div>
         <div>
@@ -48,7 +49,7 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
           <span>{movie.bio}</span>
         </div>
         
-        <button onClick={sameDirectorClick}>find movies</button>
+        <Button className="button-find" onClick={sameDirectorClick}>find movies</Button>
           {sameDirector.length > 0 && (
           <div>
             <h3>movies from same director:</h3>
@@ -59,7 +60,7 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
             ))}
           </div>
         )}
-        <button onClick={onBackClick}>Back</button>
+        <Button className="button" onClick={onBackClick}>Back</Button>
       </div>
     );
   };
