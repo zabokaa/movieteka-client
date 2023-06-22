@@ -4,6 +4,8 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import PropTypes from "prop-types"; 
 import { Button } from "react-bootstrap";
+import { Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 export const MainView = () => {
 // movieid, title, description, directorid, genreid, imageurl, featured, year
@@ -71,23 +73,29 @@ export const MainView = () => {
       
     return (
        <>
-        <div>
+        <Row>
           <h2>Welcome to MOVIETEKA</h2>
+        </Row>
+        <Row>
           {movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
+            <Col xs={12} md={6} lg={3} key={movie.id} > 
+              <MovieCard
+              
               movie={movie}
               onMovieClick={(newSelectedMovie) => {
                 setSelectedMovie(newSelectedMovie);
               }}
             />
+            </Col>
+            
           ))}
+          </Row>  
           <Button className="button" onClick={ () => { 
             setUser(null); 
             setToken(null);
             localStorage.clear();
             }}>logout</Button>
-        </div>      
+        
       </>
     );
 }
