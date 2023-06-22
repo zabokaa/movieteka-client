@@ -1,6 +1,7 @@
 import PropTypes from "prop-types"; 
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import Button from "react-bootstrap";
+
 
 export const MovieView = ({ movie , onBackClick, movies }) => {
     const [sameDirector, setSameDirector] = useState([ ]);

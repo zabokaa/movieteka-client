@@ -32,7 +32,7 @@ export const SignupView = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <Button className="button" type="submit">sign up</Button>
+            <Button className="button-find" type="submit">sign up</Button>
             <br></br>
             <label>
                 username:

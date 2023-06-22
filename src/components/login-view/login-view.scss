@@ -1,0 +1,16 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+//overwriting default var
+$primarycol: plum;
+$body-bg: LavenderBlush;
+$secondarycol: orange;
+ 
+
+.button {
+    background-color: $primarycol; 
+    color: white;
+    border-color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0px 2px 2px lightgray
+  }

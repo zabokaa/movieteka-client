@@ -3,10 +3,10 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import PropTypes from "prop-types"; 
-import { Button } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-import { Row } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import Button from "react-bootstrap";
+import Col from "react-bootstrap";
+import Row from "react-bootstrap";
+import Container from "react-bootstrap";
 
 export const MainView = () => {
 // movieid, title, description, directorid, genreid, imageurl, featured, year
