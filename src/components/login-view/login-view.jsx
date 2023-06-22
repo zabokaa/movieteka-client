@@ -41,11 +41,11 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     <>
-      <Container fluid="md">
+      <Container style={{ border: "2px solid orange", borderRadius: "20px", marginTop: 80, marginBottom: 80}} fluid="md">
  
         <Row>
           <Col>
-            <Card style={{ marginTop: 80, marginBottom: 100 }}>
+            <Card style={{ marginTop: 80, marginBottom: 80 }}>
               <Card.Body>
                 <Card.Title style={{ textAlign: "center" }}>welcome to MOVIETEKA</Card.Title>
                 <Form onSubmit={handleSubmit} >
@@ -90,7 +90,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
       </Container>
 
-      <Container>
+      <Container style={{ border: "2px solid plum", borderRadius: "20px", marginTop: 80, marginBottom: 80 }}>
         <SignupView />
       </Container>
     </>

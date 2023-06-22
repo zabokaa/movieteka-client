@@ -18,6 +18,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
           src={movie.image}
           style={{ width: "200px", height: "300px" }}
           rounded
+
         />
         <Card.Body >
           <Card.Title>{movie.title}</Card.Title>
