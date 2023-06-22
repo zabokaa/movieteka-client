@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SignupView } from "../signup-view/signup-view";
 import { Button } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
 
 export const LoginView = ({ onLoggedIn }) => {
     const [username, setUsername] = useState("");
@@ -55,7 +56,7 @@ export const LoginView = ({ onLoggedIn }) => {
             required
         />
         </label>
-        <Button className="button" type="submit">go !</Button>
+        <Button className="button" type="submit" > go !</Button>
         <br></br>
       </form>
       <SignupView />

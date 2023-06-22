@@ -1,14 +1,19 @@
 import PropTypes from "prop-types"; 
+import { Card } from "react-bootstrap";
 
 export const MovieCard = ({ movie, onMovieClick }) => {
     return (
-      <div
-        onClick={() => {
-          onMovieClick(movie);
-        }}
+      <Card
+        onClick={() => 
+          onMovieClick(movie)
+        }
       >
-        {movie.title}
-      </div>
+        <Card.Img variant="top" src={movie.image} />
+        <Card.Body>
+          <Card.Title>{movie.title}</Card.Title>
+        </Card.Body>
+      </Card>
+
     );
   };
 
@@ -18,3 +23,5 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     }).isRequired,
     onMovieClick: PropTypes.func.isRequired
   }; 
+
+  export default MovieCard;
