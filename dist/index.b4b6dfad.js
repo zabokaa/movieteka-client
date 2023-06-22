@@ -27349,6 +27349,7 @@ const MovieCard = ({ movie , onMovieClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
             onClick: ()=>onMovieClick(movie),
+            className: "align-items-center",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Img, {
                     variant: "top",
@@ -27360,7 +27361,7 @@ const MovieCard = ({ movie , onMovieClick  })=>{
                     rounded: true
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 15,
+                    lineNumber: 16,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Body, {
@@ -27369,20 +27370,20 @@ const MovieCard = ({ movie , onMovieClick  })=>{
                             children: movie.title
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 22,
+                            lineNumber: 23,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Text, {
                             children: movie.year
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 23,
+                            lineNumber: 24,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 21,
+                    lineNumber: 22,
                     columnNumber: 9
                 }, undefined)
             ]

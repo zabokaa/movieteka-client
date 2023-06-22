@@ -11,6 +11,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         onClick={() =>
           onMovieClick(movie)
         }
+        className="align-items-center"
       >
         <Card.Img
           variant="top"
@@ -18,7 +19,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
           style={{ width: "200px", height: "300px" }}
           rounded
         />
-        <Card.Body>
+        <Card.Body >
           <Card.Title>{movie.title}</Card.Title>
           <Card.Text>{movie.year}</Card.Text>
         </Card.Body>
