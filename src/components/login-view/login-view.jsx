@@ -6,8 +6,6 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import CardGroup from 'react-bootstrap/CardGroup';
-//   
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
