@@ -1,5 +1,6 @@
 import PropTypes from "prop-types"; 
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 export const MovieView = ({ movie , onBackClick, movies }) => {
     const [sameDirector, setSameDirector] = useState([ ]);
@@ -13,8 +14,19 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
     return (
       <div>
         <div>
+          <img src={movie.image}/>  
+        </div>
+        <div>
           <span className="kat" > title: </span>
           <span>{movie.title}</span>
+        </div>
+        <div>
+          <span className="kat" >genre: </span>
+          <span>{movie.genre}</span>
+        </div>
+        <div>
+          <span className="kat" >year: </span>
+          <span>{movie.year}</span>
         </div>
         <div>
           <span className="kat" >description: </span>
@@ -25,14 +37,19 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
           <span>{movie.director}</span>
         </div>
         <div>
-          <span className="kat" >genre: </span>
-          <span>{movie.genre}</span>
+          <span className="kat" >born: </span>
+          <span>{movie.byear}</span>
         </div>
         <div>
-          <span className="kat" >year: </span>
-          <span>{movie.year}</span>
+          <span className="kat" >gender: </span>    
+          <span>{movie.gender}</span>
         </div>
-        <button onClick={sameDirectorClick}>find movies</button>
+        <div>
+          <span className="kat" >bio: </span>
+          <span>{movie.bio}</span>
+        </div>
+        
+        <Button className="button-find" onClick={sameDirectorClick}>find movies</Button>
           {sameDirector.length > 0 && (
           <div>
             <h3>movies from same director:</h3>
@@ -43,7 +60,7 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
             ))}
           </div>
         )}
-        <button onClick={onBackClick}>Back</button>
+        <Button className="button" onClick={onBackClick}>Back</Button>
       </div>
     );
   };
@@ -54,7 +71,7 @@ export const MovieView = ({ movie , onBackClick, movies }) => {
       description: PropTypes.string,
       director: PropTypes.string.isRequired,
       genre: PropTypes.string.isRequired,
-      year: PropTypes.number.isRequired
+      year: PropTypes.string.isRequired
     }).isRequired,
     onBackClick: PropTypes.func.isRequired
   };

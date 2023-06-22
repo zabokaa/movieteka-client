@@ -1,20 +1,29 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+//overwriting default var
 $primarycol: plum;
+$body-bg: LavenderBlush;
+$secondarycol: orange;
+ 
 
-.movieteka {
-    color: $primarycol;
-}
-
-button {
+.button {
     background-color: $primarycol; 
     color: white;
-    padding: 5px 15px;
-    border-radius: 5px;
-    outline: 0;
+    border-color: white;
     text-transform: uppercase;
-    margin: 10px 0px;
     cursor: pointer;
     box-shadow: 0px 2px 2px lightgray
   }
+
+  .button-find {
+    background-color: $secondarycol; 
+    color: white;
+    border-color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0px 2px 2px lightgray
+  }
+  
 
   h2 {
     color: $primarycol
