@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 export const MainView = () => {
 // movieid, title, description, directorid, genreid, imageurl, featured, year
@@ -89,13 +90,14 @@ export const MainView = () => {
             </Col>
             
           ))}
-          </Row>  
+          </Row> 
+          <Container className="d-flex justify-content-end">
           <Button className="button" onClick={ () => { 
             setUser(null); 
             setToken(null);
             localStorage.clear();
-            }}>logout</Button>
-        
+            }}>logout</Button>  
+          </Container>      
       </>
     );
 }
