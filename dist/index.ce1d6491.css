@@ -13186,6 +13186,28 @@ textarea.form-control-lg {
   }
 }
 
+.button {
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: plum;
+  border-color: #fff;
+  box-shadow: 0 2px 2px #d3d3d3;
+}
+
+.button-find {
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: orange;
+  border-color: #fff;
+  box-shadow: 0 2px 2px #d3d3d3;
+}
+
+h2, .h2, .kat {
+  color: plum;
+}
+
 :root, [data-bs-theme="light"] {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
