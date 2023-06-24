@@ -12,6 +12,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
           onMovieClick(movie)
         }
         className="align-items-center"
+        style={{ marginTop: 50}}
       >
         <Card.Img
           variant="top"

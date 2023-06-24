@@ -42,7 +42,7 @@ export const MovieView = ({ movie, onBackClick, movies }) => {
               </Col>
               </Row>
               <br></br>
-              <Card.Text>DESCRIPTION  {movie.description}</Card.Text>             
+              <Card.Text>{movie.description}</Card.Text>             
               <Card.Text>DIRECTOR {movie.director}</Card.Text>
               <Row>
               <Col xs={6} md={6}>
@@ -66,7 +66,7 @@ export const MovieView = ({ movie, onBackClick, movies }) => {
       </Row>
 
 
-
+      <Container className="d-flex justify-content-end">
       <Button className="button-find" onClick={sameDirectorClick}>find movies</Button>
       {sameDirector.length > 0 && (
         <div>
@@ -79,6 +79,8 @@ export const MovieView = ({ movie, onBackClick, movies }) => {
         </div>
       )}
       <Button className="button" onClick={onBackClick}>Back</Button>
+      </Container>
+      
     </Container>
   );
 };

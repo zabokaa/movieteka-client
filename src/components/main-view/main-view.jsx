@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { BrowserRouter, Routes, Route, Navigate,  } from "react-router-dom";
 
 export const MainView = () => {
   // movieid, title, description, directorid, genreid, imageurl, featured, year
@@ -45,7 +46,7 @@ export const MainView = () => {
       .catch((error) => {
         console.error("Error fetching movies:", error);
       });
-  }, [token]);  //OR SHOULD THE TOKEN BE HERE ?!
+  }, [token]);  
 
   // loginView:
   if (!user) {
@@ -75,7 +76,7 @@ export const MainView = () => {
   return (
     <>
       <Row>
-        <h2>Welcome to MOVIETEKA</h2>
+        <h2>for more info select a movie</h2>
       </Row>
       <Row>
         {movies.map((movie) => (
