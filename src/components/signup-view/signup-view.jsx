@@ -34,7 +34,7 @@ export const SignupView = () => {
 
   return (
     <>
-      <Container fluid="md">
+      <Container style={{ border: "2px solid plum", borderRadius: "20px", marginTop: 80, marginBottom: 80 }}>
         <Card>
           <Card.Body>
             <Card.Title>SIGN UP! it's quick + easy </Card.Title>

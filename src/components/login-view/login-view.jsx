@@ -90,9 +90,9 @@ export const LoginView = ({ onLoggedIn }) => {
 
       </Container>
 
-      <Container style={{ border: "2px solid plum", borderRadius: "20px", marginTop: 80, marginBottom: 80 }}>
+      {/* <Container style={{ border: "2px solid plum", borderRadius: "20px", marginTop: 80, marginBottom: 80 }}>
         <SignupView />
-      </Container>
+      </Container> */}
     </>
   );
 };
