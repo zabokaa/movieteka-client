@@ -49,102 +49,60 @@ export const MainView = () => {
       });
   }, [token]);  
 
-  return (
-    <BrowserRouter>
-      <Row className="justify-content-md-center">
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <SignupView />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                      }}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/movies/:movieId"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : selectedMovie ? (
-                  <MovieView
-                    movie={selectedMovie}
-                    onBackClick={() => setSelectedMovie(null)}
-                    movies={movies}
-                  />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <Col md={8}>
-                    {movies.map((movie) => (
-                      <MovieCard
-                        key={movie.id}
-                        movie={movie}
-                        onMovieClick={(newSelectedMovie) =>
-                          setSelectedMovie(newSelectedMovie)
-                        }
-                      />
-                    ))}
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>the list is empty!</Col>
-                ) : (
-                  <Col md={8}>
-                    {movies.map((movie) => (
-                      <MovieCard
-                        key={movie.id}
-                        movie={movie}
-                        onMovieClick={(newSelectedMovie) =>
-                          setSelectedMovie(newSelectedMovie)
-                        }
-                      />
-                    ))}
-                  </Col>
-                )}
-              </>
-            }
-          />
-        </Routes>
-      </Row>
-    </BrowserRouter>
-  );
-}; 
+
+return (
+  <BrowserRouter>
+    <Routes>
+      <Route
+      path="/signup"
+      element={<SignupView />}
+    />
+  <Route
+    path="/login"
+    element={<LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token); }} />}
+  />
+  <Route
+    path="/movies/:movieId"
+    element={<MovieView movies={movies} />}
+  />
+  <Route
+    path="/"
+    element={
+      <>
+        <Row>
+          <h2>For more info, select a movie</h2>
+        </Row>
+        <Row>
+          {movies.map((movie) => (
+            <Col xs={12} md={6} lg={3} key={movie.id}>
+              <MovieCard movie={movie} />
+            </Col>
+          ))}
+        </Row>
+        <Container className="d-flex justify-content-end">
+          <Button
+            className="button"
+            onClick={() => {
+              setUser(null);
+              setToken(null);
+              localStorage.clear();
+            }}
+          >
+            Logout
+          </Button>
+        </Container>
+      </>
+    }
+  />
+</Routes>
+</BrowserRouter>
+)
+};
+
+
+ 
+  
+        
 
 //   // loginView:
 //   if (!user) {
@@ -156,7 +114,7 @@ export const MainView = () => {
 //         }}
 //       />);
 //   };
-
+ 
 //   if (selectedMovie) {
 //     return (
 //       <MovieView

@@ -8,9 +8,10 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     <Container>
 
       <Card
-        onClick={() =>
-          onMovieClick(movie)
-        }
+
+        // onClick={() =>
+        //   onMovieClick(movie)
+        // }
         className="align-items-center"
         style={{ marginTop: 50}}
       >
@@ -25,6 +26,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
           <Card.Title>{movie.title}</Card.Title>
           <Card.Text>{movie.year}</Card.Text>
         </Card.Body>
+        <Link to={`/movies/${movie.id}`}>more..</Link>
       </Card>
 
     </Container>

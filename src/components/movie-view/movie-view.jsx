@@ -67,7 +67,7 @@ export const MovieView = ({ movie, onBackClick, movies }) => {
 
 
       <Container className="d-flex justify-content-end">
-      <Button className="button-find" onClick={sameDirectorClick}>find movies</Button>
+      {/* <Button className="button-find" onClick={sameDirectorClick}>find movies</Button>
       {sameDirector.length > 0 && (
         <div>
           <h3>movies from same director:</h3>
@@ -78,7 +78,8 @@ export const MovieView = ({ movie, onBackClick, movies }) => {
           ))}
         </div>
       )}
-      <Button className="button" onClick={onBackClick}>Back</Button>
+      <Button className="button" onClick={onBackClick}>Back</Button> */}
+      <Link to="/">back</Link>
       </Container>
       
     </Container>
