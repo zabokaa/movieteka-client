@@ -83,7 +83,7 @@ export const MovieView = ({ movies}) => {
       )}
       <Button className="button" onClick={onBackClick}>Back</Button> */}
       <Link to="/">
-        <Button className="button">back</Button>
+        <Button className="button">home</Button>
       </Link>
       </Container>
       

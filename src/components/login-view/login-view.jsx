@@ -47,7 +47,7 @@ export const LoginView = ({ onLoggedIn }) => {
           <Col>
             <Card style={{ marginTop: 80, marginBottom: 80 }}>
               <Card.Body>
-                <Card.Title style={{ textAlign: "center" }}>welcome to MOVIETEKA</Card.Title>
+                <Card.Title style={{ textAlign: "center" }}>welcome back</Card.Title>
                 <Form onSubmit={handleSubmit} >
                   <Form.Group className="mb-3" controlId="formGroupUsername">
 

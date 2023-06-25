@@ -7,8 +7,9 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { BrowserRouter, Routes, Route, Navigate,  } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import { SignupView } from "../signup-view/signup-view";
+import { NavigationView } from "../navigation-view/navigation-view";
 
 export const MainView = () => {
   // movieid, title, description, directorid, genreid, imageurl, featured, year
@@ -61,6 +62,10 @@ export const MainView = () => {
 
 return (
   <BrowserRouter>
+    <NavigationView user={user} onLoggedOut={() => {
+      setUser(null)
+    }}
+    />
     <Routes>
       <Route
       path="/signup"
@@ -118,9 +123,6 @@ return (
                 <Col md={12}>the list is empty.</Col>
               ) : (
                 <>
-                  <Row>
-                    <h2>for more info, select a movie</h2>
-                  </Row>
                   <Row>
                     {movies.map((movie) => (
                       <Col xs={12} md={6} lg={3} key={movie.id}>
