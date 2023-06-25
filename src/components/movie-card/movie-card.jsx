@@ -1,18 +1,14 @@
 import PropTypes from "prop-types";
+import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container"
-import Link from "react-router-dom"
+import {Link} from "react-router-dom"
 
-// export const MovieCard = ({ movie, onMovieClick }) => {
 export const MovieCard = ({ movie}) => {
   return (
     <Container>
 
       <Card
-
-        // onClick={() =>
-        //   onMovieClick(movie)
-        // }
         className="align-items-center"
         style={{ marginTop: 50}}
       >
@@ -25,9 +21,11 @@ export const MovieCard = ({ movie}) => {
         />
         <Card.Body >
           <Card.Title>{movie.title}</Card.Title>
-          <Card.Text>{movie.year}</Card.Text>
+          <Card.Text className="align-items-center">{movie.year}</Card.Text>
         </Card.Body>
-        <Link to={`/movies/${movie.id}`}>more..</Link>
+        <Link to={`/movies/${movie.id}`}>
+          <Button className="button-find">more..</Button>
+        </Link>
       </Card>
 
     </Container>
@@ -37,7 +35,8 @@ export const MovieCard = ({ movie}) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired
 };

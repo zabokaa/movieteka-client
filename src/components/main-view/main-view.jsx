@@ -49,6 +49,15 @@ export const MainView = () => {
       });
   }, [token]);  
 
+  if (selectedMovie) {
+    return (
+      <MovieView
+        movie={selectedMovie}
+        onBackClick={() => setSelectedMovie(null)}
+        movies={movies}  //array as a prop f movieView
+      />
+    );
+  }
 
 return (
   <BrowserRouter>
@@ -84,13 +93,29 @@ return (
   }
   />
   <Route
+            path="/movies/:movieId"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : movies.length === 0 ? (
+                  <Col>The list is empty!</Col>
+                ) : (
+                  <Col>
+                    <MovieView movies={movies} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+  <Route
           path='/'
           element={
             <>
               {!user ? (
                 <Navigate to='/login' replace />
               ) : movies.length === 0 ? (
-                <Col md={12}>The list is empty.</Col>
+                <Col md={12}>the list is empty.</Col>
               ) : (
                 <>
                   <Row>

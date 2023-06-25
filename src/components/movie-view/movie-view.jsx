@@ -1,20 +1,23 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container"
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
+import {Link, useParams} from "react-router-dom";
 
 
-export const MovieView = ({ movie, onBackClick, movies }) => {
-  const [sameDirector, setSameDirector] = useState([]);
-  const sameDirectorClick = () => {
-    const moviesSameDirector = movies.filter(
-      (m) => m.director === movie.director
-    );
-    setSameDirector(moviesSameDirector);
-  };
+// export const MovieView = ({ movie, movies }) => {
+  // const [sameDirector, setSameDirector] = useState([]);
+  // const sameDirectorClick = () => {
+  //   const moviesSameDirector = movies.filter(
+  //     (m) => m.director === movie.director
+  //   );
+  //   setSameDirector(moviesSameDirector);
+  // };
+export const MovieView = ({ movies}) => {
+  const {movieId} = useParams();
+  const movie= movies.find((f) => f.id === movieId);
 
   return (
     <Container fluid="md">
@@ -79,7 +82,9 @@ export const MovieView = ({ movie, onBackClick, movies }) => {
         </div>
       )}
       <Button className="button" onClick={onBackClick}>Back</Button> */}
-      <Link to="/">back</Link>
+      <Link to="/">
+        <Button className="button">back</Button>
+      </Link>
       </Container>
       
     </Container>
