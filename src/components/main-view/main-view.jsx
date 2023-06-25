@@ -55,106 +55,71 @@ return (
     <Routes>
       <Route
       path="/signup"
-      element={<SignupView />}
+      element={
+        <>
+        {user ? (
+          <Navigate to='/' />
+        ) : (
+          <Col md={5}>
+            <SignupView />
+          </Col>
+        )}
+      </>
+    }
     />
   <Route
     path="/login"
-    element={<LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token); }} />}
-  />
-  <Route
-    path="/movies/:movieId"
-    element={<MovieView movies={movies} />}
-  />
-  <Route
-    path="/"
     element={
       <>
-        <Row>
-          <h2>For more info, select a movie</h2>
-        </Row>
-        <Row>
-          {movies.map((movie) => (
-            <Col xs={12} md={6} lg={3} key={movie.id}>
-              <MovieCard movie={movie} />
-            </Col>
-          ))}
-        </Row>
-        <Container className="d-flex justify-content-end">
-          <Button
-            className="button"
-            onClick={() => {
-              setUser(null);
-              setToken(null);
-              localStorage.clear();
+      {user ? (
+        <Navigate to='/' />
+      ) : (
+        <Col md={5}>
+          <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token);
             }}
-          >
-            Logout
-          </Button>
-        </Container>
-      </>
-    }
+          />
+        </Col>
+      )}
+    </>
+  }
   />
-</Routes>
-</BrowserRouter>
-)
-};
-
-
- 
-  
-        
-
-//   // loginView:
-//   if (!user) {
-//     return (
-//       <LoginView
-//         onLoggedIn={(user, token) => {
-//           setUser(user);
-//           setToken(token);
-//         }}
-//       />);
-//   };
- 
-//   if (selectedMovie) {
-//     return (
-//       <MovieView
-//         movie={selectedMovie}
-//         onBackClick={() => setSelectedMovie(null)}
-//         movies={movies}  //array as a prop f movieView
-//       />
-//     );
-//   }
-
-//   if (movies.length === 0) {
-//     return <div>no movies to see</div>;
-//   }
-
-//   return (
-//     <>
-//       <Row>
-//         <h2>for more info select a movie</h2>
-//       </Row>
-//       <Row>
-//         {movies.map((movie) => (
-//           <Col xs={12} md={6} lg={3} key={movie.id} >
-//             <MovieCard
-
-//               movie={movie}
-//               onMovieClick={(newSelectedMovie) => {
-//                 setSelectedMovie(newSelectedMovie);
-//               }}
-//             />
-//           </Col>
-
-//         ))}
-//       </Row>
-//       <Container className="d-flex justify-content-end">
-//         <Button className="button" onClick={() => {
-//           setUser(null);
-//           setToken(null);
-//           localStorage.clear();
-//         }}>logout</Button>
-//       </Container>
-//     </>
-//   );
-// }
+  <Route
+          path='/'
+          element={
+            <>
+              {!user ? (
+                <Navigate to='/login' replace />
+              ) : movies.length === 0 ? (
+                <Col md={12}>The list is empty.</Col>
+              ) : (
+                <>
+                  <Row>
+                    <h2>for more info, select a movie</h2>
+                  </Row>
+                  <Row>
+                    {movies.map((movie) => (
+                      <Col xs={12} md={6} lg={3} key={movie.id}>
+                        <MovieCard movie={movie} />
+                      </Col>
+                    ))}
+                  </Row>
+                  <Container className='d-flex justify-content-end'>
+                    <Button
+                      className='button'
+                      onClick={() => {
+                        setUser(null);
+                        setToken(null);
+                        localStorage.clear();
+                      }}
+                    >
+                      Logout
+                    </Button>
+                  </Container>
+                </>
+              )}
+            </>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+)};

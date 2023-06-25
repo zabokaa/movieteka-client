@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container"
+import Link from "react-router-dom"
 
-
-export const MovieCard = ({ movie, onMovieClick }) => {
+// export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieCard = ({ movie}) => {
   return (
     <Container>
 
