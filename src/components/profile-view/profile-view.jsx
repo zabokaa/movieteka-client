@@ -1,10 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {PropTypes} from "prop-types";
 import { Card, Button, Col, Form } from "react-bootstrap";
-import { MovieCard } from "./MovieCard";
+import { MovieCard } from "../movie-card/movie-card";
 import { useState } from "react";
 
-export const ProfileView = ({ user, token, movies, onUpdateUser, onDeregister }) => {
+export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +15,7 @@ export const ProfileView = ({ user, token, movies, onUpdateUser, onDeregister })
 
   // update user information
 
-  const handleUpdate = (s) => {
+  const handleSubmit = (s) => {
     s.preventDefault();
     const data = {
       username: username,
@@ -102,7 +102,6 @@ export const ProfileView = ({ user, token, movies, onUpdateUser, onDeregister })
                   placeholder="username must have a minimum of 5 characters"
                 />
 
-                <Form.Text></Form.Text>
 
               </Form.Group>
 
@@ -117,9 +116,6 @@ export const ProfileView = ({ user, token, movies, onUpdateUser, onDeregister })
                   required
                   placeholder="new password"
                 />
-
-                <Form.Text></Form.Text>
-
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -137,6 +133,23 @@ export const ProfileView = ({ user, token, movies, onUpdateUser, onDeregister })
                 <Form.Text></Form.Text>
 
               </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formGroupEmail">
+
+<Form.Label>birthday:</Form.Label>
+
+<Form.Control
+  type="date"
+  value={bday}
+  onChange={(e) => setBday(e.target.value)}
+  placeholder="if you want to share your day of birth .. "
+/>
+
+<Form.Text className="text-muted">
+  .. then you will get a surprise on your next bday 
+</Form.Text>
+
+</Form.Group>
               <Button className="button" type="submit">update</Button>
             </Form>
 
@@ -159,9 +172,10 @@ ProfileView.propTypes = {
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    favoriteMovies: PropTypes.arrayOf(PropTypes.object).isRequired
+    favoriteMovies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    bday: PropTypes.instanceOf(Date).isRequired,
   }).isRequired,
-  onUpdateUser: PropTypes.func.isRequired,
-  onDeregister: PropTypes.func.isRequired
+  updateUser: PropTypes.func.isRequired,
+  onLoggedOut: PropTypes.func.isRequired
 };
 

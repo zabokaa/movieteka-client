@@ -7,9 +7,10 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationView } from "../navigation-view/navigation-view";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   // movieid, title, description, directorid, genreid, imageurl, featured, year
@@ -19,7 +20,10 @@ export const MainView = () => {
   const [token, setToken] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-
+  const updateUser = user => {
+    setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
+  }
   // use effect hook:
   useEffect(() => {
     if (!token) {
@@ -48,7 +52,7 @@ export const MainView = () => {
       .catch((error) => {
         console.error("Error fetching movies:", error);
       });
-  }, [token]);  
+  }, [token]);
 
   if (selectedMovie) {
     return (
@@ -60,60 +64,75 @@ export const MainView = () => {
     );
   }
 
-return (
-  <BrowserRouter>
-    <NavigationView user={user} onLoggedOut={() => {
-      setUser(null)
-    }}
-    />
-    <Routes>
-      <Route
-      path="/signup"
-      element={
-        <>
-        {user ? (
-          <Navigate to='/' />
-        ) : (
-          <Col md={5}>
-            <SignupView />
-          </Col>
-        )}
-      </>
-    }
-    />
-  <Route
-    path="/login"
-    element={
-      <>
-      {user ? (
-        <Navigate to='/' />
-      ) : (
-        <Col md={5}>
-          <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token);
-            }}
-          />
-        </Col>
-      )}
-    </>
-  }
-  />
-  <Route
-            path="/movies/:movieId"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <Col>
-                    <MovieView movies={movies} />
-                  </Col>
-                )}
-              </>
-            }
-          />
-  <Route
+  return (
+    <BrowserRouter>
+      <NavigationView user={user} onLoggedOut={() => {
+        setUser(null)
+      }}
+      />
+      <Routes>
+        <Route
+          path="/signup"
+          element={
+            <>
+              {user ? (
+                <Navigate to='/' />
+              ) : (
+                <Col md={5}>
+                  <SignupView />
+                </Col>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <>
+              {user ? (
+                <Navigate to='/' />
+              ) : (
+                <Col md={5}>
+                  <LoginView onLoggedIn={(user, token) => {
+                    setUser(user); setToken(token);
+                  }}
+                  />
+                </Col>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/:movieId"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <Col>The list is empty!</Col>
+              ) : (
+                <Col>
+                  <MovieView movies={movies} />
+                </Col>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            !user ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <ProfileView user={user} token={token} movies={movies} onLoggedOut={() => {
+                setUser(null);
+                setToken(null);
+                localStorage.clear();
+              }} updateUser={updateUser} />
+            )
+          }
+        />
+        <Route
           path='/'
           element={
             <>
@@ -145,8 +164,10 @@ return (
                 </>
               )}
             </>
+
           }
         />
       </Routes>
     </BrowserRouter>
-)};
+  )
+};
