@@ -27,7 +27,6 @@ export const NavigationView = ({ user, onLoggedOut }) => {
                   home
                 </Nav.Link>
 
-                {/* not working up to now */}
                 <Nav.Link as={Link} to="/profile">
                   my account
                 </Nav.Link>

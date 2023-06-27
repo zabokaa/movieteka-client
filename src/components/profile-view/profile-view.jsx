@@ -43,7 +43,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
         }
       })
       .catch(e => {
-        alert(e);
+        console.error(e);
       });
   };
 
@@ -62,30 +62,65 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
         }
       })
       .catch(e => {
-        alert(e);
+        console.error(e);
       });
   }
 
+  //deleting movie from favMovie array
+  const handleUnlist = (movieID) => {
+    fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movieID}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log("movie successfully unlisted");
+        } else {
+          // Failed to unlist movie
+          console.log("deleting movie failed");
+        }
+      })
+      .catch(e => {
+        console.error(e);
+      });
+  };
+
+
   return (
     <>
-      <h2>welcome back to your account</h2> 
+      <h2>welcome back to your account</h2>
       <Card>
         <Card.Body>
           <Card.Title>hello {user.username}</Card.Title>
           <Card.Text>email: {user.email}</Card.Text>
           <Card.Text>birthday: {user.bday}</Card.Text>
-          <Card.Text>your favorite movies:</Card.Text>
-          {user.favMovies.length > 0 ? (
+          {/* <Card.Text>your favorite movies:</Card.Text> */}
+          {/* {user.favMovies.length > 0 ? (
             user.favMovies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))
           ) : (
             <p>up to now you have no favorite movies selected</p>
+          )} */}
+          <Card.Text>your favorite movies:</Card.Text>
+          {user.favMovies.length > 0 ? (
+            user.favMovies.map((movie) => (
+              <div key={movie.id}>
+                <MovieCard movie={movie} />
+                <div>
+                  <span>{movie.name}</span>
+                  <Button onClick={() => handleUnlist(movie.id)}>delete</Button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>up to now you have no favorite movies selected</p>
           )}
+
         </Card.Body>
       </Card>
 
-  {/* //UPDATE user data  */}
+      {/* //UPDATE user data  */}
 
       <Col>
         <Card>
@@ -144,11 +179,11 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
 
       <Col>
         <Card className="mb-3">
-          <Card.Body> 
+          <Card.Body>
             <Card.Title>deregister here</Card.Title>
             <Button className="button-find" onClick={handleDeregister}>delete</Button>
           </Card.Body>
-          
+
         </Card>
       </Col>
     </>

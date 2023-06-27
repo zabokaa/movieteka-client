@@ -2,15 +2,60 @@ import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
+import { useState } from "react";
 
-export const MovieCard = ({ movie}) => {
+
+export const MovieCard = ({ movie, user, token }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [username, setUsername] = useState("");
+  const handleFavoriteToggle = () => {
+    setIsFavorite(prevState => !prevState);
+
+    if (!isFavorite) {
+      fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ movieID: movie.id })
+      })
+        .then(response => {
+          if (response.ok) {
+            alert("movie added to favs");
+          } else {
+            alert("adding movie failed");
+          }
+        })
+        .catch(e => {
+          console.error(e);
+        });
+    } else {
+      handleUnlist(movie.id);
+    }
+  };
+  const handleUnlist = (movieID) => {
+
+    fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        if (response.ok) {
+          alert("removed");
+        } else {
+          alert("failed");
+        }
+      })
+      .catch(e => {
+        console.error(e);
+      });
+  };
+
   return (
     <Container>
 
       <Card
         className="align-items-center"
-        style={{ marginTop: 50}}
+        style={{ marginTop: 50 }}
       >
         <Card.Img
           variant="top"
@@ -23,6 +68,9 @@ export const MovieCard = ({ movie}) => {
           <Card.Title>{movie.title}</Card.Title>
           <Card.Text className="align-items-center">{movie.year}</Card.Text>
         </Card.Body>
+        <Button className="button" onClick={handleFavoriteToggle}>
+          {isFavorite ? "Unfavorite" : "Favorite"}
+        </Button>
         <Link to={`/movies/${movie.id}`}>
           <Button className="button-find">more..</Button>
         </Link>
@@ -38,7 +86,7 @@ MovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  user: PropTypes.object.isRequired
 };
 
 // if create export default -> no need for {} at import 
