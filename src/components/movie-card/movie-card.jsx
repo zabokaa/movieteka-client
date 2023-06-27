@@ -4,7 +4,8 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container"
 import { Link } from "react-router-dom"
 import { useState } from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const MovieCard = ({ movie, user, token }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -69,7 +70,9 @@ export const MovieCard = ({ movie, user, token }) => {
           <Card.Text className="align-items-center">{movie.year}</Card.Text>
         </Card.Body>
         <Button className="button" onClick={handleFavoriteToggle}>
-          {isFavorite ? "Unfavorite" : "Favorite"}
+          {isFavorite ? (<FontAwesomeIcon icon={faHeart} color="orange" />
+  ) : (
+    <FontAwesomeIcon icon={faHeart} color="LavenderBlush" />)}
         </Button>
         <Link to={`/movies/${movie.id}`}>
           <Button className="button-find">more..</Button>
