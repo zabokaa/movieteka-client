@@ -14,10 +14,10 @@ export const MovieCard = ({ movie, user, token }) => {
     setIsFavorite(prevState => !prevState);
 
     if (!isFavorite) {
-      fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.movieID}`, {
+      fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ movieID: movie.movieID })
+        body: JSON.stringify({ id: movie._id})
       })
         .then(response => {
           if (response.ok) {
@@ -30,12 +30,12 @@ export const MovieCard = ({ movie, user, token }) => {
           console.error(e);
         });
     } else {
-      handleUnlist(movie.id);
+      handleUnlist(movie._id);
     }
   };
   const handleUnlist = (movieID) => {
 
-    fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.movieID}`, {
+    fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })

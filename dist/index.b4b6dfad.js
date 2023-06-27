@@ -27428,14 +27428,14 @@ const MovieCard = ({ movie, user, token })=>{
     const [username, setUsername] = (0, _react.useState)("");
     const handleFavoriteToggle = ()=>{
         setIsFavorite((prevState)=>!prevState);
-        if (!isFavorite) fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.movieID}`, {
+        if (!isFavorite) fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                movieID: movie.movieID
+                id: movie._id
             })
         }).then((response)=>{
             if (response.ok) alert("movie added to favs");
@@ -27443,10 +27443,10 @@ const MovieCard = ({ movie, user, token })=>{
         }).catch((e)=>{
             console.error(e);
         });
-        else handleUnlist(movie.id);
+        else handleUnlist(movie._id);
     };
     const handleUnlist = (movieID)=>{
-        fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.movieID}`, {
+        fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
