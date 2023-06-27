@@ -21,7 +21,8 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
       username: username,
       password: password
     };
-    fetch("https://movieteka-zabokaa.herokuapp.com/login", {
+    // fetch("https://movieteka-zabokaa.herokuapp.com/login", {
+    fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -74,7 +75,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
           <Card.Title>{user.username}</Card.Title>
           <Card.Text>email: {user.email}</Card.Text>
           <Card.Text>bday: {user.bday}</Card.Text>
-          <Card.Text>your favorite Movies:</Card.Text>
+          <Card.Text>your favorite movies:</Card.Text>
           {user.favMovies.length > 0 ? (
             user.favMovies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
@@ -158,12 +159,12 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
       </Col>
 
 
-      <Column>
+      <Col>
         <Card>
           <Card.Title>deregister here</Card.Title>
           <Button className="button-find" onClick={handleDeregister}>delete</Button>
         </Card>
-      </Column>
+      </Col>
     </>
   );
 };
