@@ -1,11 +1,10 @@
 import React from "react";
-import {PropTypes} from "prop-types";
+import { PropTypes } from "prop-types";
 import { Card, Button, Col, Form } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 import { useState } from "react";
 
 export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) => {
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -18,10 +17,10 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
   const handleSubmit = (s) => {
     s.preventDefault();
     const data = {
-      username: username,
-      password: password
+      email,
+      bday
     };
-    // fetch("https://movieteka-zabokaa.herokuapp.com/login", {
+
     fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}`, {
       method: "PUT",
       headers: {
@@ -69,12 +68,12 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
 
   return (
     <>
-      <h2>User Profile</h2>
+      <h2>welcome to your profile</h2> 
       <Card>
         <Card.Body>
           <Card.Title>{user.username}</Card.Title>
           <Card.Text>email: {user.email}</Card.Text>
-          <Card.Text>bday: {user.bday}</Card.Text>
+          <Card.Text>birthday: {user.bday}</Card.Text>
           <Card.Text>your favorite movies:</Card.Text>
           {user.favMovies.length > 0 ? (
             user.favMovies.map((movie) => (
@@ -85,28 +84,15 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
           )}
         </Card.Body>
       </Card>
+
+  //UPDATE user data 
       <Col>
         <Card>
           <Card.Body>
             <Card.Title>update your data</Card.Title>
-            <Form onSubmit={handleSubmit} >
-              <Form.Group className="mb-3" controlId="formGroupUsername">
 
-                <Form.Label>username:</Form.Label>
-
-                <Form.Control
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  minLength="5"
-                  placeholder="username must have a minimum of 5 characters"
-                />
-
-
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formGroupPassword">
+            <Form onSubmit={handleSubmit}>
+              {/* <Form.Group className="mb-3">
 
                 <Form.Label>password:</Form.Label>
 
@@ -114,55 +100,55 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                   placeholder="new password"
                 />
-              </Form.Group>
+              </Form.Group> */}
 
-              <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Group className="mb-3">
 
                 <Form.Label>email:</Form.Label>
 
                 <Form.Control
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
+                  defaultValue={user.email}
+                  onChange={(s) => setEmail(s.target.value)}
                   placeholder="you@movies.com"
                 />
 
-                <Form.Text></Form.Text>
-
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Group className="mb-3">
 
-<Form.Label>birthday:</Form.Label>
+                <Form.Label>birthday:</Form.Label>
 
-<Form.Control
-  type="date"
-  value={bday}
-  onChange={(e) => setBday(e.target.value)}
-  placeholder="if you want to share your day of birth .. "
-/>
+                <Form.Control
+                  type="date"
+                  value={bday}
+                  onChange={(s) => setBday(s.target.value)}
+                  placeholder="if you want to share your day of birth .. "
+                />
 
-<Form.Text className="text-muted">
-  .. then you will get a surprise on your next bday 
-</Form.Text>
+                <Form.Text className="text-muted">
+                  .. then you will get a surprise on your next bday
+                </Form.Text>
 
-</Form.Group>
+              </Form.Group>
               <Button className="button" type="submit">update</Button>
-            </Form>
 
+            </Form>
           </Card.Body>
         </Card>
       </Col>
 
 
       <Col>
-        <Card>
-          <Card.Title>deregister here</Card.Title>
-          <Button className="button-find" onClick={handleDeregister}>delete</Button>
+        <Card className="mb-3">
+          <Card.Body> 
+            <Card.Title>deregister here</Card.Title>
+            <Button className="button-find" onClick={handleDeregister}>delete</Button>
+          </Card.Body>
+          
         </Card>
       </Col>
     </>
