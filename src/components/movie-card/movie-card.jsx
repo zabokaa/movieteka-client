@@ -8,16 +8,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const MovieCard = ({ movie, user, token }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState("");
   const [username, setUsername] = useState("");
   const handleFavoriteToggle = () => {
     setIsFavorite(prevState => !prevState);
 
     if (!isFavorite) {
-      fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
+      fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.movieID}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ movieID: movie.id })
+        body: JSON.stringify({ movieID: movie.movieID })
       })
         .then(response => {
           if (response.ok) {
@@ -35,7 +35,7 @@ export const MovieCard = ({ movie, user, token }) => {
   };
   const handleUnlist = (movieID) => {
 
-    fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
+    fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.movieID}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })

@@ -100,6 +100,5 @@ MovieView.propTypes = {
     director: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired
+  }).isRequired
 };

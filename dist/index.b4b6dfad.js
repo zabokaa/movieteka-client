@@ -27424,18 +27424,18 @@ var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _s = $RefreshSig$();
 const MovieCard = ({ movie, user, token })=>{
     _s();
-    const [isFavorite, setIsFavorite] = (0, _react.useState)(false);
+    const [isFavorite, setIsFavorite] = (0, _react.useState)("");
     const [username, setUsername] = (0, _react.useState)("");
     const handleFavoriteToggle = ()=>{
         setIsFavorite((prevState)=>!prevState);
-        if (!isFavorite) fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
+        if (!isFavorite) fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.movieID}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                movieID: movie.id
+                movieID: movie.movieID
             })
         }).then((response)=>{
             if (response.ok) alert("movie added to favs");
@@ -27446,7 +27446,7 @@ const MovieCard = ({ movie, user, token })=>{
         else handleUnlist(movie.id);
     };
     const handleUnlist = (movieID)=>{
-        fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
+        fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.movieID}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27551,7 +27551,7 @@ const MovieCard = ({ movie, user, token })=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MovieCard, "OhjWkkWil3xlPWlBdjd4QMihPtQ=");
+_s(MovieCard, "SlyyCxHezgxQhdt0vTZ8/ESBJ/o=");
 _c = MovieCard;
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
@@ -71414,8 +71414,7 @@ MovieView.propTypes = {
         director: (0, _propTypesDefault.default).string.isRequired,
         genre: (0, _propTypesDefault.default).string.isRequired,
         year: (0, _propTypesDefault.default).string.isRequired
-    }).isRequired,
-    onBackClick: (0, _propTypesDefault.default).func.isRequired
+    }).isRequired
 };
 var _c;
 $RefreshReg$(_c, "MovieView");
