@@ -68,10 +68,10 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
 
   return (
     <>
-      <h2>welcome to your profile</h2> 
+      <h2>welcome back to your account</h2> 
       <Card>
         <Card.Body>
-          <Card.Title>{user.username}</Card.Title>
+          <Card.Title>hello {user.username}</Card.Title>
           <Card.Text>email: {user.email}</Card.Text>
           <Card.Text>birthday: {user.bday}</Card.Text>
           <Card.Text>your favorite movies:</Card.Text>
@@ -85,7 +85,8 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
         </Card.Body>
       </Card>
 
-  //UPDATE user data 
+  {/* //UPDATE user data  */}
+
       <Col>
         <Card>
           <Card.Body>
@@ -113,7 +114,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                   value={email}
                   defaultValue={user.email}
                   onChange={(s) => setEmail(s.target.value)}
-                  placeholder="you@movies.com"
+                  placeholder="new@email.com"
                 />
 
               </Form.Group>
@@ -126,7 +127,6 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                   type="date"
                   value={bday}
                   onChange={(s) => setBday(s.target.value)}
-                  placeholder="if you want to share your day of birth .. "
                 />
 
                 <Form.Text className="text-muted">
