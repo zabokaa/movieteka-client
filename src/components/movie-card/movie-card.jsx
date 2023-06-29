@@ -3,21 +3,25 @@ import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container"
 import { Link } from "react-router-dom"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-export const MovieCard = ({ movie, user, token }) => {
+export const MovieCard = ({ movie, user, updateUser }) => {
   const [isFavorite, setIsFavorite] = useState("");
+
+  useEffect(() => {
+    setIsFavorite(user.favMovies.includes(movie.id));
+  })
 
   const handleAddFav = () => {
     const token = localStorage.getItem("token");
 
     if (!isFavorite) {
-      fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {
+      fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ id: movie._id})
+        body: JSON.stringify({ id: movie._id })
       })
         .then(response => {
           if (response.ok) {
@@ -25,26 +29,35 @@ export const MovieCard = ({ movie, user, token }) => {
           } else {
             alert("adding movie failed");
           }
+          return response.json();
         })
-        .catch(e => {
+        .then((data) => {
+          setIsFavorite(true);
+          updateUser(data);
+        })
+        .catch((e) => {
           console.error(e);
         });
-    } else {
-      handleUnlist(movie._id);
     }
   };
-  const handleUnlist = (movieID) => {
+  const handleUnlist = () => {
+    const token = localStorage.getItem("token");
 
-    fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {
+    fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           alert("removed");
         } else {
           alert("failed");
         }
+        return response.json();
+      })
+      .then((data) => {
+        setIsFavorite(true);
+        updateUser(data);
       })
       .catch(e => {
         console.error(e);
@@ -71,8 +84,8 @@ export const MovieCard = ({ movie, user, token }) => {
         </Card.Body>
         <Button className="button" onClick={handleFavoriteToggle}>
           {isFavorite ? (<FontAwesomeIcon icon={faHeart} color="orange" />
-  ) : (
-    <FontAwesomeIcon icon={faHeart} color="LavenderBlush" />)}
+          ) : (
+            <FontAwesomeIcon icon={faHeart} color="LavenderBlush" />)}
         </Button>
         <Link to={`/movies/${movie.id}`}>
           <Button className="button-find">more..</Button>

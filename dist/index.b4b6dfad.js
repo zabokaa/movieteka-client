@@ -27422,12 +27422,15 @@ var _react = require("react");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _s = $RefreshSig$();
-const MovieCard = ({ movie, user, token })=>{
+const MovieCard = ({ movie, user, updateUser })=>{
     _s();
     const [isFavorite, setIsFavorite] = (0, _react.useState)("");
+    (0, _react.useEffect)(()=>{
+        setIsFavorite(user.favMovies.includes(movie.id));
+    });
     const handleAddFav = ()=>{
         const token = localStorage.getItem("token");
-        if (!isFavorite) fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {
+        if (!isFavorite) fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -27439,13 +27442,17 @@ const MovieCard = ({ movie, user, token })=>{
         }).then((response)=>{
             if (response.ok) alert("movie added to favs");
             else alert("adding movie failed");
+            return response.json();
+        }).then((data)=>{
+            setIsFavorite(true);
+            updateUser(data);
         }).catch((e)=>{
             console.error(e);
         });
-        else handleUnlist(movie._id);
     };
-    const handleUnlist = (movieID)=>{
-        fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {
+    const handleUnlist = ()=>{
+        const token = localStorage.getItem("token");
+        fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27453,6 +27460,10 @@ const MovieCard = ({ movie, user, token })=>{
         }).then((response)=>{
             if (response.ok) alert("removed");
             else alert("failed");
+            return response.json();
+        }).then((data)=>{
+            setIsFavorite(true);
+            updateUser(data);
         }).catch((e)=>{
             console.error(e);
         });
@@ -27474,7 +27485,7 @@ const MovieCard = ({ movie, user, token })=>{
                     rounded: true
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 61,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Body, {
@@ -27483,7 +27494,7 @@ const MovieCard = ({ movie, user, token })=>{
                             children: movie.title
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 69,
+                            lineNumber: 82,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Text, {
@@ -27491,13 +27502,13 @@ const MovieCard = ({ movie, user, token })=>{
                             children: movie.year
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 70,
+                            lineNumber: 83,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 68,
+                    lineNumber: 81,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -27508,19 +27519,19 @@ const MovieCard = ({ movie, user, token })=>{
                         color: "orange"
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 73,
+                        lineNumber: 86,
                         columnNumber: 26
                     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactFontawesome.FontAwesomeIcon), {
                         icon: (0, _freeSolidSvgIcons.faHeart),
                         color: "LavenderBlush"
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 75,
-                        columnNumber: 5
+                        lineNumber: 88,
+                        columnNumber: 13
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 72,
+                    lineNumber: 85,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27530,27 +27541,27 @@ const MovieCard = ({ movie, user, token })=>{
                         children: "more.."
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 78,
+                        lineNumber: 91,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 77,
+                    lineNumber: 90,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 57,
+            lineNumber: 70,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
-        lineNumber: 55,
+        lineNumber: 68,
         columnNumber: 5
     }, undefined);
 };
-_s(MovieCard, "nGgiLlDI3aNd4w0DFPZ099AfvVA=");
+_s(MovieCard, "oGceP8ZQPVbWpzvLTUxh5i7brqU=");
 _c = MovieCard;
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
