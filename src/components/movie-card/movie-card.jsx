@@ -9,9 +9,9 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const MovieCard = ({ movie, user, token }) => {
   const [isFavorite, setIsFavorite] = useState("");
-  const [username, setUsername] = useState("");
-  const handleFavoriteToggle = () => {
-    setIsFavorite(prevState => !prevState);
+
+  const handleAddFav = () => {
+    const token = localStorage.getItem("token");
 
     if (!isFavorite) {
       fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {

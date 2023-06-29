@@ -27425,9 +27425,8 @@ var _s = $RefreshSig$();
 const MovieCard = ({ movie, user, token })=>{
     _s();
     const [isFavorite, setIsFavorite] = (0, _react.useState)("");
-    const [username, setUsername] = (0, _react.useState)("");
-    const handleFavoriteToggle = ()=>{
-        setIsFavorite((prevState)=>!prevState);
+    const handleAddFav = ()=>{
+        const token = localStorage.getItem("token");
         if (!isFavorite) fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie._id}`, {
             method: "POST",
             headers: {
@@ -27551,7 +27550,7 @@ const MovieCard = ({ movie, user, token })=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MovieCard, "SlyyCxHezgxQhdt0vTZ8/ESBJ/o=");
+_s(MovieCard, "nGgiLlDI3aNd4w0DFPZ099AfvVA=");
 _c = MovieCard;
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
