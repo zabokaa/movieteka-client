@@ -26521,6 +26521,10 @@ textarea.form-control-lg {
   }
 }
 
+body {
+  background-color: snow;
+}
+
 .button {
   color: #fff;
   text-transform: uppercase;

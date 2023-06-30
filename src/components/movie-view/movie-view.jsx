@@ -7,14 +7,6 @@ import Card from "react-bootstrap/Card";
 import {Link, useParams} from "react-router-dom";
 
 
-// export const MovieView = ({ movie, movies }) => {
-  // const [sameDirector, setSameDirector] = useState([]);
-  // const sameDirectorClick = () => {
-  //   const moviesSameDirector = movies.filter(
-  //     (m) => m.director === movie.director
-  //   );
-  //   setSameDirector(moviesSameDirector);
-  // };
 export const MovieView = ({ movies}) => {
   const {movieId} = useParams();
   const movie= movies.find((f) => f.id === movieId);
@@ -70,18 +62,7 @@ export const MovieView = ({ movies}) => {
 
 
       <Container className="d-flex justify-content-end">
-      {/* <Button className="button-find" onClick={sameDirectorClick}>find movies</Button>
-      {sameDirector.length > 0 && (
-        <div>
-          <h3>movies from same director:</h3>
-          {sameDirector.map((movie) => (
-            <div key={movie.id}>
-              <span>{movie.title}</span>
-            </div>
-          ))}
-        </div>
-      )}
-      <Button className="button" onClick={onBackClick}>Back</Button> */}
+
       <Link to="/">
         <Button className="button">home</Button>
       </Link>
