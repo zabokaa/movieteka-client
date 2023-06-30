@@ -1,6 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { Card, Button, Col, Form } from "react-bootstrap";
+import { Card, Button, Col, Form, Row } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 import { useState } from "react";
 
@@ -90,26 +90,27 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
     <>
       <h2>welcome back to your account</h2>
       {/* display user data */}
-      <Col>
-        <Card>
-          <Card.Body>
-            <Card.Title>hello {user.username}</Card.Title>
-            <Card.Text>email: {user.email}</Card.Text>
-            <Card.Text>birthday: {new Date(user.bday).toLocaleDateString()}</Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
-
-
+      <Row>
+        <Col xs={6} md={4}>
+          <Card style={{ marginTop: 30 }}>
+            <Card.Body>
+              <Card.Title>hello {user.username}</Card.Title>
+              <Card.Text>email: {user.email}</Card.Text>
+              {/* formatting date according to browser's localsetting */}
+              <Card.Text>birthday: {new Date(user.bday).toLocaleDateString()}</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
 
       {/* //UPDATE user data  */}
-      <Col>
-        <Card>
-          <Card.Body>
-            <Card.Title>update your data</Card.Title>
 
-            <Form onSubmit={handleSubmit}>
-              {/* <Form.Group className="mb-3">
+        <Col xs={6} md={8}>
+          <Card style={{ marginTop: 30 }}>
+            <Card.Body>
+              <Card.Title>update your data</Card.Title>
+
+              <Form onSubmit={handleSubmit}>
+                {/* <Form.Group className="mb-3">
 
                 <Form.Label>password:</Form.Label>
 
@@ -121,70 +122,87 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                 />
               </Form.Group> */}
 
-              <Form.Group className="mb-3">
+                <Form.Group className="mb-3">
 
-                <Form.Label>email:</Form.Label>
+                  <Form.Label>email:</Form.Label>
 
-                <Form.Control
-                  type="email"
-                  value={email}
-                  defaultValue={user.email}
-                  onChange={(s) => setEmail(s.target.value)}
-                  placeholder="new@email.com"
-                />
+                  <Form.Control
+                    type="email"
+                    value={email}
+                    defaultValue={user.email}
+                    onChange={(s) => setEmail(s.target.value)}
+                    placeholder="new@email.com"
+                    required
+                  />
 
-              </Form.Group>
+                </Form.Group>
 
-              <Form.Group className="mb-3">
+                <Form.Group className="mb-3">
 
-                <Form.Label>birthday:</Form.Label>
+                  <Form.Label>birthday:</Form.Label>
 
-                <Form.Control
-                  type="date"
-                  value={bday}
-                  onChange={(s) => setBday(s.target.value)}
-                />
+                  <Form.Control
+                    type="date"
+                    value={bday}
+                    onChange={(s) => setBday(s.target.value)}
+                    required
+                  />
 
-                <Form.Text className="text-muted">
-                  .. then you will get a surprise on your next bday
-                </Form.Text>
+                  <Form.Text className="text-muted">
+                    .. then you will get a surprise on your next bday
+                  </Form.Text>
 
-              </Form.Group>
-              <Button className="button" type="submit">update</Button>
+                </Form.Group>
+                <Button className="button" type="submit">update</Button>
 
-            </Form>
-          </Card.Body>
-        </Card>
-      </Col>
-
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
       { /* favMovies incl link more and unlike */}
-      <Col>
-        <Card>
-          <Card.Body>
-            <Card.Title>your favorite movies:</Card.Title>
-            {favMovies.length > 0 ? (
-              favMovies.map((movie) => (
-                <div key={movie.id}>
-                  <MovieCard movie={movie} user={user} updateUser={updateUser} />
-                </div>
-              ))
-            ) : (
-              <p>up to now you have no favorite movies selected</p>
-            )}
+      <Row >
+        <Col >
+          <Card style={{ marginTop: 30 }}>
+            <Card.Body>
+              <Card.Title>your favorite movies</Card.Title>
+              <Card.Text>
+                double click on the &#x2665; to delete movie from your favs
+              </Card.Text>
+              <Row>
+              {favMovies.length > 0 ? (
+                favMovies.map((movie) => (
+ 
+                  <Col key={movie.id} xs={12} md={3} >
+                  <div >
+                    <MovieCard movie={movie} user={user} updateUser={updateUser} />
+                  </div>
+                  </Col>
+                ))
+              ) : (
+                <Col>
+                <p>up to now you have no favorite movies selected</p>
+                </Col>
+              )}
 
-          </Card.Body>
-        </Card>
-      </Col>
+              </Row>
 
-      <Col>
-        <Card className="mb-3">
-          <Card.Body>
-            <Card.Title>deregister here</Card.Title>
-            <Button className="button-find" onClick={handleDeregister}>delete</Button>
-          </Card.Body>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      {/* delete user */}
+      <Row>
+        <Col xs={12} md={4}>
+          <Card className="mb-3" style={{ marginTop: 30 }}>
+            <Card.Body>
+              <Card.Title>deregister here</Card.Title>
+              <Button className="button-find" onClick={handleDeregister}>delete</Button>
+            </Card.Body>
 
-        </Card>
-      </Col>
+          </Card>
+        </Col>
+      </Row>
     </>
   );
 };
