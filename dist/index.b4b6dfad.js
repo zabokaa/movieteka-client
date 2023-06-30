@@ -71695,13 +71695,12 @@ const SignupView = ()=>{
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
-            style: {
-                border: "2px solid plum",
-                borderRadius: "20px",
-                marginTop: 80,
-                marginBottom: 80
-            },
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
+                style: {
+                    marginTop: 80,
+                    border: "2px solid plum",
+                    borderRadius: "20px"
+                },
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Body, {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Title, {
@@ -72085,7 +72084,8 @@ const ProfileView = ({ user, token, movies, onLoggedOut, updateUser })=>{
                         md: 4,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
                             style: {
-                                marginTop: 30
+                                marginTop: 30,
+                                border: "2px solid plum"
                             },
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                                 children: [
@@ -72140,7 +72140,8 @@ const ProfileView = ({ user, token, movies, onLoggedOut, updateUser })=>{
                         md: 8,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
                             style: {
-                                marginTop: 30
+                                marginTop: 30,
+                                border: "2px solid orange"
                             },
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                                 children: [
@@ -72257,7 +72258,8 @@ const ProfileView = ({ user, token, movies, onLoggedOut, updateUser })=>{
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
                         style: {
-                            marginTop: 30
+                            marginTop: 30,
+                            border: "2px solid plum"
                         },
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                             children: [
@@ -72344,7 +72346,8 @@ const ProfileView = ({ user, token, movies, onLoggedOut, updateUser })=>{
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
                         className: "mb-3",
                         style: {
-                            marginTop: 30
+                            marginTop: 30,
+                            border: "2px solid orange"
                         },
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                             children: [
@@ -72356,7 +72359,7 @@ const ProfileView = ({ user, token, movies, onLoggedOut, updateUser })=>{
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                    className: "button-find",
+                                    className: "button",
                                     onClick: handleDeregister,
                                     children: "delete"
                                 }, void 0, false, {

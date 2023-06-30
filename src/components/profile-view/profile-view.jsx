@@ -92,7 +92,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
       {/* display user data */}
       <Row>
         <Col xs={6} md={4}>
-          <Card style={{ marginTop: 30 }}>
+          <Card style={{ marginTop: 30, border: "2px solid plum" }}>
             <Card.Body>
               <Card.Title>hello {user.username}</Card.Title>
               <Card.Text>email: {user.email}</Card.Text>
@@ -105,7 +105,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
       {/* //UPDATE user data  */}
 
         <Col xs={6} md={8}>
-          <Card style={{ marginTop: 30 }}>
+          <Card style={{ marginTop: 30, border: "2px solid orange"}}>
             <Card.Body>
               <Card.Title>update your data</Card.Title>
 
@@ -163,7 +163,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
       { /* favMovies incl link more and unlike */}
       <Row >
         <Col >
-          <Card style={{ marginTop: 30 }}>
+          <Card style={{ marginTop: 30, border: "2px solid plum" }}>
             <Card.Body>
               <Card.Title>your favorite movies</Card.Title>
               <Card.Text>
@@ -194,10 +194,10 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
       {/* delete user */}
       <Row>
         <Col xs={12} md={4}>
-          <Card className="mb-3" style={{ marginTop: 30 }}>
+          <Card className="mb-3" style={{ marginTop: 30, border: "2px solid orange" }}>
             <Card.Body>
               <Card.Title>deregister here</Card.Title>
-              <Button className="button-find" onClick={handleDeregister}>delete</Button>
+              <Button className="button" onClick={handleDeregister}>delete</Button>
             </Card.Body>
 
           </Card>
