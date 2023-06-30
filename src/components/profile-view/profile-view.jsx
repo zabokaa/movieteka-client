@@ -94,17 +94,11 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
           <Card.Title>hello {user.username}</Card.Title>
           <Card.Text>email: {user.email}</Card.Text>
           <Card.Text>birthday: {user.bday}</Card.Text>
-          {/* <Card.Text>your favorite movies:</Card.Text> */}
-          {/* {user.favMovies.length > 0 ? (
-            user.favMovies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))
-          ) : (
-            <p>up to now you have no favorite movies selected</p>
-          )} */}
+          {/* maybe in separate card ? */}
           <Card.Text>your favorite movies:</Card.Text>
-          {user.favMovies.length > 0 ? (
-            user.favMovies.map((movie) => (
+          {/* from the new favMovie array ! */}
+          {favMovies.length > 0 ? (
+            favMovies.map((movie) => (
               <div key={movie.id}>
                 <MovieCard movie={movie} />
                 <div>

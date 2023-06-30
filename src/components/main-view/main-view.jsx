@@ -145,7 +145,7 @@ export const MainView = () => {
                   <Row>
                     {movies.map((movie) => (
                       <Col xs={12} md={6} lg={3} key={movie.id}>
-                        <MovieCard movie={movie} user={user} />
+                        <MovieCard movie={movie} user={user} updateUser={updateUser} />
                       </Col>
                     ))}
                   </Row>

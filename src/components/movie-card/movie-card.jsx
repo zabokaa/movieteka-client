@@ -9,11 +9,26 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const MovieCard = ({ movie, user, updateUser }) => {
   const [isFavorite, setIsFavorite] = useState("");
+  const [heartColor, setHeartColor] = useState("lavenderBlush");
 
   useEffect(() => {
+    if (user && user.favMovies) {
     setIsFavorite(user.favMovies.includes(movie.id));
-  })
+    }
+  }, [user, movie.id]);
 
+  //heart icon
+  const handleHeart = () => {
+    if (heartColor === "lavenderBlush") {
+      setHeartColor("orange");
+      handleAddFav();
+    } else if (heartColor === "orange") {
+      setHeartColor("grey");
+      handleUnlist();
+    }
+  };
+
+  //adding movie to favMovies
   const handleAddFav = () => {
     const token = localStorage.getItem("token");
 
@@ -40,16 +55,17 @@ export const MovieCard = ({ movie, user, updateUser }) => {
         });
     }
   };
+
+  //deleting movie from favMovies
   const handleUnlist = () => {
     const token = localStorage.getItem("token");
-
     fetch(`https://movieteka-zabokaa.herokuapp.com/users/${user.username}/favMovies/${movie.id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => {
         if (response.ok) {
-          alert("removed");
+          alert("movie removed from favs");
         } else {
           alert("failed");
         }
@@ -82,11 +98,10 @@ export const MovieCard = ({ movie, user, updateUser }) => {
           <Card.Title>{movie.title}</Card.Title>
           <Card.Text className="align-items-center">{movie.year}</Card.Text>
         </Card.Body>
-        <Button className="button" onClick={handleFavoriteToggle}>
-          {isFavorite ? (<FontAwesomeIcon icon={faHeart} color="orange" />
-          ) : (
-            <FontAwesomeIcon icon={faHeart} color="LavenderBlush" />)}
+        <Button className="button" onClick={handleHeart}>
+          <FontAwesomeIcon icon={faHeart} color={heartColor} />
         </Button>
+
         <Link to={`/movies/${movie.id}`}>
           <Button className="button-find">more..</Button>
         </Link>
