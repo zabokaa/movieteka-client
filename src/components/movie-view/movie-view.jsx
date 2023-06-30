@@ -23,13 +23,13 @@ export const MovieView = ({ movies}) => {
     <Container fluid="md">
       <Row>
         <Col cs={12} md={6}> 
-          <Card style={{ marginTop: 80 }}>
+          <Card style={{ marginTop: 30 }}>
             <Card.Img src={movie.image} />
           </Card>
         </Col>
 
         <Col cs={12} md={6}>
-          <Card style={{ marginTop: 80}}>
+          <Card style={{ marginTop: 30, border: "2px solid orange"}}>
             <Card.Body>
             <Card.Title>{movie.title}</Card.Title>
               <Row>

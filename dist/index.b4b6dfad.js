@@ -71223,7 +71223,7 @@ const MovieView = ({ movies })=>{
                         md: 6,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
                             style: {
-                                marginTop: 80
+                                marginTop: 30
                             },
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Img, {
                                 src: movie.image
@@ -71247,7 +71247,8 @@ const MovieView = ({ movies })=>{
                         md: 6,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
                             style: {
-                                marginTop: 80
+                                marginTop: 30,
+                                border: "2px solid orange"
                             },
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Body, {
                                 children: [
@@ -71517,7 +71518,8 @@ const LoginView = ({ onLoggedIn })=>{
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Title, {
                                     style: {
-                                        textAlign: "center"
+                                        textAlign: "center",
+                                        color: "plum"
                                     },
                                     children: "welcome back"
                                 }, void 0, false, {
