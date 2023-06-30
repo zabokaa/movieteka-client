@@ -89,33 +89,20 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
   return (
     <>
       <h2>welcome back to your account</h2>
-      <Card>
-        <Card.Body>
-          <Card.Title>hello {user.username}</Card.Title>
-          <Card.Text>email: {user.email}</Card.Text>
-          <Card.Text>birthday: {user.bday}</Card.Text>
-          {/* maybe in separate card ? */}
-          <Card.Text>your favorite movies:</Card.Text>
-          {/* from the new favMovie array ! */}
-          {favMovies.length > 0 ? (
-            favMovies.map((movie) => (
-              <div key={movie.id}>
-                <MovieCard movie={movie} />
-                <div>
-                  <span>{movie.name}</span>
-                  <Button onClick={() => handleUnlist(movie.id)}>delete</Button>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>up to now you have no favorite movies selected</p>
-          )}
+      {/* display user data */}
+      <Col>
+        <Card>
+          <Card.Body>
+            <Card.Title>hello {user.username}</Card.Title>
+            <Card.Text>email: {user.email}</Card.Text>
+            <Card.Text>birthday: {new Date(user.bday).toLocaleDateString()}</Card.Text>
+          </Card.Body>
+        </Card>
+      </Col>
 
-        </Card.Body>
-      </Card>
+
 
       {/* //UPDATE user data  */}
-
       <Col>
         <Card>
           <Card.Body>
@@ -170,6 +157,24 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
         </Card>
       </Col>
 
+      { /* favMovies incl link more and unlike */}
+      <Col>
+        <Card>
+          <Card.Body>
+            <Card.Title>your favorite movies:</Card.Title>
+            {favMovies.length > 0 ? (
+              favMovies.map((movie) => (
+                <div key={movie.id}>
+                  <MovieCard movie={movie} user={user} updateUser={updateUser} />
+                </div>
+              ))
+            ) : (
+              <p>up to now you have no favorite movies selected</p>
+            )}
+
+          </Card.Body>
+        </Card>
+      </Col>
 
       <Col>
         <Card className="mb-3">
