@@ -27428,7 +27428,10 @@ const MovieCard = ({ movie, user, updateUser })=>{
     const [isFavorite, setIsFavorite] = (0, _react.useState)("");
     const [heartColor, setHeartColor] = (0, _react.useState)("lavenderBlush");
     (0, _react.useEffect)(()=>{
-        if (user && user.favMovies) setIsFavorite(user.favMovies.includes(movie.id));
+        if (user && user.favMovies && user.favMovies.includes(movie.id)) {
+            setIsFavorite(true);
+            setHeartColor("orange");
+        }
     }, [
         user,
         movie.id
@@ -27462,6 +27465,7 @@ const MovieCard = ({ movie, user, updateUser })=>{
         }).then((data)=>{
             setIsFavorite(true);
             updateUser(data);
+            setHeartColor = "orange";
         }).catch((e)=>{
             console.error(e);
         });
@@ -27481,6 +27485,7 @@ const MovieCard = ({ movie, user, updateUser })=>{
         }).then((data)=>{
             setIsFavorite(true);
             updateUser(data);
+            setHeartColor("grey");
         }).catch((e)=>{
             console.error(e);
         });
@@ -27502,7 +27507,7 @@ const MovieCard = ({ movie, user, updateUser })=>{
                     rounded: true
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 90,
+                    lineNumber: 93,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Body, {
@@ -27511,7 +27516,7 @@ const MovieCard = ({ movie, user, updateUser })=>{
                             children: movie.title
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 98,
+                            lineNumber: 101,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Text, {
@@ -27519,13 +27524,13 @@ const MovieCard = ({ movie, user, updateUser })=>{
                             children: movie.year
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 99,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 97,
+                    lineNumber: 100,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -27536,12 +27541,12 @@ const MovieCard = ({ movie, user, updateUser })=>{
                         color: heartColor
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 102,
+                        lineNumber: 105,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 101,
+                    lineNumber: 104,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27551,23 +27556,23 @@ const MovieCard = ({ movie, user, updateUser })=>{
                         children: "more.."
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 106,
+                        lineNumber: 109,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 105,
+                    lineNumber: 108,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 86,
+            lineNumber: 89,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
-        lineNumber: 84,
+        lineNumber: 87,
         columnNumber: 5
     }, undefined);
 };

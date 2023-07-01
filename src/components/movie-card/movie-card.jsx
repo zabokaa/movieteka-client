@@ -12,8 +12,9 @@ export const MovieCard = ({ movie, user, updateUser }) => {
   const [heartColor, setHeartColor] = useState("lavenderBlush");
 
   useEffect(() => {
-    if (user && user.favMovies) {
-    setIsFavorite(user.favMovies.includes(movie.id));
+    if (user && user.favMovies && user.favMovies.includes(movie.id)) {
+    setIsFavorite(true);
+    setHeartColor("orange")
     }
   }, [user, movie.id]);
 
@@ -49,6 +50,7 @@ export const MovieCard = ({ movie, user, updateUser }) => {
         .then((data) => {
           setIsFavorite(true);
           updateUser(data);
+          setHeartColor=("orange")
         })
         .catch((e) => {
           console.error(e);
@@ -74,6 +76,7 @@ export const MovieCard = ({ movie, user, updateUser }) => {
       .then((data) => {
         setIsFavorite(true);
         updateUser(data);
+        setHeartColor("grey")
       })
       .catch(e => {
         console.error(e);
