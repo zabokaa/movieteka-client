@@ -15,16 +15,24 @@ import { ProfileView } from "../profile-view/profile-view";
 export const MainView = () => {
   // movieid, title, description, directorid, genreid, imageurl, featured, year
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
+
   const updateUser = user => {
     setUser(user);
     localStorage.setItem("user", JSON.stringify(user));
   }
-  // use effect hook:
+  // use effect hooks:
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+
+    if (!user || !token && storedToken && storedToken) {
+      setUser(storedUser);
+      setToken(storedToken);
+    }
+  })
+
   useEffect(() => {
     if (!token) {
       return;
@@ -54,20 +62,12 @@ export const MainView = () => {
       });
   }, [token]);
 
-  if (selectedMovie) {
-    return (
-      <MovieView
-        movie={selectedMovie}
-        onBackClick={() => setSelectedMovie(null)}
-        movies={movies}  //array as a prop f movieView
-      />
-    );
-  }
-
   return (
     <BrowserRouter>
       <NavigationView user={user} onLoggedOut={() => {
         setUser(null)
+        setToken(null);
+        localStorage.clear();
       }}
       />
       <Routes>
@@ -109,7 +109,7 @@ export const MainView = () => {
               {!user ? (
                 <Navigate to="/login" replace />
               ) : movies.length === 0 ? (
-                <Col>The list is empty!</Col>
+                <Col>the list is empty!</Col>
               ) : (
                 <Col>
                   <MovieView movies={movies} />
