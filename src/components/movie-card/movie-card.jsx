@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-export const MovieCard = ({ movie, user, updateUser }) => {
+export let MovieCard = ({ movie, user, updateUser }) => {
   let [isFavorite, setIsFavorite] = useState("");
   const [heartColor, setHeartColor] = useState("lavenderBlush");
 

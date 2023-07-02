@@ -27470,7 +27470,7 @@ var _react = require("react");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _s = $RefreshSig$();
-const MovieCard = ({ movie, user, updateUser })=>{
+let MovieCard = ({ movie, user, updateUser })=>{
     _s();
     let [isFavorite, setIsFavorite] = (0, _react.useState)("");
     const [heartColor, setHeartColor] = (0, _react.useState)("lavenderBlush");
