@@ -27472,7 +27472,7 @@ var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _s = $RefreshSig$();
 const MovieCard = ({ movie, user, updateUser })=>{
     _s();
-    const [isFavorite, setIsFavorite] = (0, _react.useState)("");
+    let [isFavorite, setIsFavorite] = (0, _react.useState)("");
     const [heartColor, setHeartColor] = (0, _react.useState)("lavenderBlush");
     (0, _react.useEffect)(()=>{
         if (user && user.favMovies && user.favMovies.includes(movie.id)) {

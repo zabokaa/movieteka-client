@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const MovieCard = ({ movie, user, updateUser }) => {
-  const [isFavorite, setIsFavorite] = useState("");
+  let [isFavorite, setIsFavorite] = useState("");
   const [heartColor, setHeartColor] = useState("lavenderBlush");
 
   useEffect(() => {
