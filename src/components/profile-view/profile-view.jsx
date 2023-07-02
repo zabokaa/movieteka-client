@@ -167,7 +167,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
             <Card.Body>
               <Card.Title>your favorite movies</Card.Title>
               <Card.Text>
-                double click on the &#x2665; to delete movie from your favs
+                click on the &#x2665; to delete movie from your favs
               </Card.Text>
               <Row>
               {favMovies.length > 0 ? (

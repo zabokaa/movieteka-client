@@ -182,7 +182,7 @@ return (
                     <input
                       type="text"
                       className="form-control form-control-lg"
-                      placeholder="search for a movie"
+                      placeholder="&#x2665; search for a movie"
                       value={searchQuery}
                       onChange={searchMovie}
                     />
