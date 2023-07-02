@@ -27512,7 +27512,7 @@ const MovieCard = ({ movie, user, updateUser })=>{
         }).then((data)=>{
             setIsFavorite(true);
             updateUser(data);
-            setHeartColor = "orange";
+            setHeartColor("orange");
         }).catch((e)=>{
             console.error(e);
         });

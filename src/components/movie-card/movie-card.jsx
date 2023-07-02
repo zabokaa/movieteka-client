@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons"
 
 export const MovieCard = ({ movie, user, updateUser }) => {
   const [isFavorite, setIsFavorite] = useState("");
@@ -50,7 +50,7 @@ export const MovieCard = ({ movie, user, updateUser }) => {
         .then((data) => {
           setIsFavorite(true);
           updateUser(data);
-          setHeartColor=("orange")
+          setHeartColor("orange")
         })
         .catch((e) => {
           console.error(e);
