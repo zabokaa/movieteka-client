@@ -13,7 +13,6 @@ import { NavigationView } from "../navigation-view/navigation-view";
 import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
-  // movieid, title, description, directorid, genreid, imageurl, featured, year
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
