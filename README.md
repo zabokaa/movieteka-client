@@ -1,6 +1,8 @@
 ##  movie API
 # :purple_circle: *Movieteka* :purple_circle:
 
+![deployed app](./img/deployed_movieteka.png?raw=true "collage of deployed app")
+
 ## table of contents
 * [objective](#objective)
 * [key features](#key-features)
