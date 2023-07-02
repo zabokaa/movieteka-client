@@ -26521,6 +26521,10 @@ textarea.form-control-lg {
   }
 }
 
+body {
+  background-color: snow;
+}
+
 .button {
   color: #fff;
   text-transform: uppercase;
@@ -26541,6 +26545,11 @@ textarea.form-control-lg {
 
 h2, .h2, .kat {
   color: plum;
+}
+
+.navi {
+  color: #fff;
+  background-color: plum;
 }
 
 /*# sourceMappingURL=index.ab0485ab.css.map */

@@ -34,8 +34,8 @@ export const SignupView = () => {
 
   return (
     <>
-      <Container fluid="md">
-        <Card>
+      <Container>
+        <Card style={{ marginTop: 80, border: "2px solid plum", borderRadius: "20px"}}>
           <Card.Body>
             <Card.Title>SIGN UP! it's quick + easy </Card.Title>
             <Form onSubmit={handleSubmit} >

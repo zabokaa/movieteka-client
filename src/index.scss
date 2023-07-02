@@ -4,7 +4,10 @@
 $primarycol: plum;
 $body-bg: LavenderBlush;
 $secondarycol: orange;
- 
+
+body {
+  background-color: snow;
+}
 
 .button {
     background-color: $primarycol; 
@@ -31,4 +34,9 @@ $secondarycol: orange;
 
   .kat {
     color: $primarycol;
+  }
+
+  .navi {
+    background-color: $primarycol; 
+    color: white;
   }
