@@ -41,7 +41,7 @@ Profile view
 - project is: _in progress
 
 ## link to page
-- TBA
+- https://movieteka-1312.netlify.app/
 - also check out my repo with the server-side component 
 
 ## acknowledgements
