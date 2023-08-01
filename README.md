@@ -1,4 +1,4 @@
-##  movie API
+##  client side of movieteka
 # :purple_circle: *Movieteka* :purple_circle:
 
 ![deployed app](./img/deployed_movieteka.png?raw=true "collage of deployed app")
