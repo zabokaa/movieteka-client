@@ -6,6 +6,7 @@
 ## table of contents
 * [objective](#objective)
 * [key features](#key-features)
+* [technologies](#technologies)
 * [project status](#project-status)
 * [link to page](#link-to-page)
 * [acknowledgements](#acknowledgements)
@@ -37,8 +38,11 @@ Profile view
 - allows users to remove a movie from their list of favorites
 - allows existing users to deregister
 
+## technologies
+HTML | CSS | JavaScript | MongoDB | Express | React | Node.js
+
 ## project status
-- project is: _in progress
+- project is: completed
 
 ## link to page
 - https://movieteka-1312.netlify.app/
