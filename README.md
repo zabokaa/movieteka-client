@@ -46,6 +46,7 @@ HTML | CSS | JavaScript | MongoDB | Express | React | Node.js
 
 ## link to page
 - https://movieteka-1312.netlify.app/
+- try out without registering simply use `username: movie` and `password: teka`. 🎥 Have fun ! ✨
 - also check out my repo with the server-side component 
 
 ## acknowledgements
