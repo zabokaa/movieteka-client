@@ -12,7 +12,8 @@
 * [acknowledgements](#acknowledgements)
 
 ## objective
-- to build the client-side component of a movies web application 
+- to build the client-side component of a movies web application
+- low-threshold access for users without social media accounts
 
 ## key features
 *main view*
